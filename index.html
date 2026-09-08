@@ -1,0 +1,1571 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7号衣库·门店商品差异化对话话术（督导版 v4.4）</title>
+<style>
+:root{
+  --head:#901020; --sec:#B52A3A; --sub:#444444;
+  --gray:#6b7280; --line:#EADBC8; --bg:#FFF9E6; --card:#fff;
+  --yellow-bg:#FFF6D1; --yellow-ink:#7A5C00; --mark:#FFFF00;
+  --blue-bg:#FBEAEA; --blue-ink:#7A1C26;
+  --ok:#1d7a3f; --warn:#b45309;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",system-ui,sans-serif;background:var(--bg);color:#222;font-size:15px;line-height:1.45}
+button{font:inherit;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 12px 60px}
+
+/* ---------- top ---------- */
+header.top{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#5c0b15,#901020);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.topin{max-width:1000px;margin:0 auto;padding:10px 12px}
+.toprow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{font-size:18px;font-weight:700;letter-spacing:.3px;flex:1 1 auto}
+.brand small{display:block;font-weight:400;font-size:12px;opacity:.85}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions button,.actions a.btn{background:#fff;color:var(--head);border:none;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.actions button:hover{background:#FFF0F0}
+.actions button.warn{background:#fff4e6;color:#b45309}
+.actions button.danger{background:#fdeaea;color:#b3261e}
+.metagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:10px}
+.meta{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.meta label{font-size:12px;opacity:.9;white-space:nowrap}
+.meta input,.meta select{background:transparent;border:none;color:#fff;flex:1;min-width:0;outline:none}
+.meta input::placeholder{color:rgba(255,255,255,.55)}
+.meta select option{color:#222}
+.progress{margin-top:8px;display:flex;align-items:center;gap:8px;font-size:12px}
+.pbar{flex:1;background:rgba(255,255,255,.25);height:8px;border-radius:99px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:#FCE07C;border-radius:99px;transition:width .3s}
+
+/* ---------- meta / nav ---------- */
+.nav{position:sticky;top:72px;z-index:40;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.navin{max-width:1000px;margin:0 auto;padding:4px 12px;display:flex;gap:5px;overflow-x:auto}
+.navin a{white-space:nowrap;font-size:11px;color:var(--head);background:#FFF2D9;border-radius:99px;padding:3px 9px;text-decoration:none}
+.navin a.on{background:var(--head);color:#fff}
+.legend{max-width:1000px;margin:10px auto 2px;padding:0 12px;display:flex;flex-wrap:wrap;gap:6px;font-size:11px}
+.legend span{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:3px 7px;color:#555}
+.lg-s{font-style:italic;color:#6b7280;background:#f3f4f6;padding:1px 6px;border-radius:4px}
+.lg-y{background:#FFF0F2;color:#7A1C26;padding:1px 6px;border-radius:4px;border:1px solid #D99AA4;border-left:3px solid var(--head)}
+.lg-b{background:#FFF6D1;color:#7A5C00;padding:1px 6px;border-radius:4px;border:1px dashed #DFC98C}
+
+/* ---------- sections ---------- */
+section.sec{max-width:1000px;margin:14px auto 0}
+.sectop{display:flex;align-items:center;gap:10px;padding:8px 2px 4px;border-bottom:2px solid var(--sec);margin-bottom:4px}
+.sectop h2{font-size:18px;color:var(--head);flex:1}
+.sectop .tm{font-size:11px;color:var(--head);background:#FBEAEA;padding:2px 8px;border-radius:99px;white-space:nowrap}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;box-shadow:0 1px 3px rgba(90,10,20,.05)}
+.qtitle{font-size:15px;font-weight:700;color:var(--head);display:flex;gap:6px;align-items:baseline;margin:2px 0 5px}
+.qtitle .qno{background:var(--head);color:#fff;border-radius:6px;padding:0 8px;font-size:13px}
+.qtitle .dur{font-size:12px;color:#888;font-weight:400}
+
+/* speech */
+.script{margin:5px 0;padding:5px 9px;border-left:4px solid #D9C5C5;background:#FFF8F0;border-radius:6px;color:var(--gray);font-style:italic;font-size:13.5px}
+.script .mark,.hint .mark{font-style:normal}
+.script b{font-style:normal;color:#444}
+.hint{color:#7a828b;font-size:12.5px;font-style:italic;padding:1px 2px}
+.hint.tiny{font-size:12px}
+.des{margin:4px 0 2px;font-size:12.5px;color:var(--gray);font-style:italic}
+.secintro{background:#fff;border:1px solid var(--line);border-left:4px solid var(--sec);border-radius:8px;padding:6px 10px;margin:6px 0;color:var(--sub);font-style:italic}
+
+/* yellow/blue boxes */
+.ybox{background:#FFF0F2;color:#7A1C26;border:1px solid #D99AA4;border-left:5px solid var(--head);border-radius:8px;padding:7px 10px;margin:6px 0;font-size:13.5px;box-shadow:0 1px 4px rgba(144,16,32,.10)}
+.ybox .h{font-weight:700;color:#8E1626}
+.ybox .h mark{background:var(--mark);padding:0 3px}
+.ybox mark{background:var(--mark);padding:0 3px}
+.ybox b{font-weight:700}
+.ybox .row{margin:3px 0}
+.bbx{background:#FFF6D1;color:#7A5C00;border:1px dashed #DFC98C;border-radius:8px;padding:6px 10px;margin:6px 0;font-size:13px}
+.bbx b{font-weight:700}
+.grayeg{color:#8B7D6B;font-size:12px;font-style:italic;margin:2px 0 2px 8px}
+
+/* options & blanks */
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0;align-items:center}
+.opt,.chip{display:inline-flex;align-items:center;gap:5px;border:1px solid #D9C8B8;background:#fff;border-radius:99px;padding:3px 10px;cursor:pointer;user-select:none;transition:.15s;font-size:13.5px}
+.condbox{display:flex;flex-wrap:wrap;gap:5px;align-items:center;width:100%}
+.opt:hover,.chip:hover{border-color:var(--sec);background:#FFF5E6}
+.opt:has(input:checked),.chip:has(input:checked){background:var(--head);border-color:var(--head);color:#fff}
+.opt input,.chip input{width:16px;height:16px;accent-color:#fff;vertical-align:middle}
+.opts .inline{display:inline-flex}
+.fillline{margin:4px 0;font-size:13.5px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.fillline .fl{color:#333;white-space:nowrap}
+.blank{background:transparent;border:none;border-bottom:1.5px dashed #C2A896;min-width:120px;width:auto;max-width:100%;padding:2px 4px;outline:none;border-radius:0;font-size:13.5px}
+.blank:focus{border-bottom-color:var(--sec);border-bottom-style:solid;background:#FFF8F0}
+.blank.wide{width:78%}
+.blank.full{width:100%;min-width:0;flex:1 1 100%}
+textarea.blank{width:100%;resize:vertical;min-height:38px;border:1px dashed #C2A896;border-radius:6px;background:#fff;padding:5px}
+textarea.blank:focus{border:1px solid var(--sec)}
+
+/* tables */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#fff;margin:6px 0}
+table.frm{width:100%;border-collapse:collapse;font-size:12.5px;min-width:640px}
+table.frm th{background:#FBEAEA;color:var(--head);padding:5px 6px;text-align:left;border:1px solid var(--line);font-weight:600;white-space:nowrap}
+table.frm td{border:1px solid var(--line);padding:3px 5px;vertical-align:middle}
+table.frm tr:hover td{background:#FFF8F0}
+table.frm td.rk{font-weight:700;color:var(--head);text-align:center;white-space:nowrap}
+table.frm .blank{width:100%;min-width:80px;border-bottom-color:#D1B8A8;padding:2px}
+table.frm .opt,.frm .chip{padding:2px 7px;font-size:12px;margin:1px;display:inline-flex}
+.cellopts{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-start}
+.optrowlabel{font-weight:600;white-space:nowrap}
+
+/* uploads / scan */
+.uprow{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;margin:3px 0}
+.upbtn{display:inline-flex;align-items:center;gap:4px;background:#FFF0F0;color:var(--head);border:1px dashed var(--sec);border-radius:6px;padding:4px 8px;font-size:12px;cursor:pointer;white-space:nowrap}
+.upbtn:hover{background:#FBEAEA}
+.upfile{display:none}
+.thumbwrap{display:flex;flex-direction:column;gap:3px;align-items:flex-start}
+.thumb{max-width:100px;max-height:100px;border:1px solid var(--line);border-radius:6px;object-fit:cover;background:#fff}
+.scanbox{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.scantip{font-size:11px;color:#888}
+
+/* photo list */
+.photos{display:flex;flex-direction:column;gap:8px;margin:6px 0}
+.photoitem{display:flex;flex-direction:column;gap:4px}
+.photolabel{font-size:13px;font-weight:600;color:#444}
+
+/* footer */
+footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-size:12px;padding:0 12px}
+.stickact{position:fixed;right:14px;bottom:14px;z-index:60;display:flex;flex-direction:column;gap:8px}
+.stickact button{background:var(--head);color:#fff;border:none;border-radius:99px;padding:10px 16px;font-size:13px;font-weight:600;box-shadow:0 4px 12px rgba(90,10,20,.35)}
+.stickact button:hover{background:#5c0b15}
+
+/* modal */
+.modalmask{position:fixed;inset:0;background:rgba(30,10,10,.45);z-index:200;display:none;align-items:center;justify-content:center;padding:14px}
+.modalmask.show{display:flex}
+.modal{background:#fff;border-radius:14px;max-width:760px;width:100%;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,.3)}
+.modal h3{padding:14px 18px;background:var(--head);color:#fff;font-size:15px}
+.modal .mbody{padding:14px 18px;overflow:auto}
+.modal .mfoot{padding:12px 18px;display:flex;gap:8px;justify-content:flex-end;border-top:1px solid var(--line)}
+.modal textarea{width:100%;min-height:52vh;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12.5px;line-height:1.7;resize:vertical}
+.mbtn{background:#FFF0F0;border:none;border-radius:8px;padding:8px 16px;font-weight:600;color:var(--head)}
+.mbtn.primary{background:var(--head);color:#fff}
+
+/* submit & records */
+.actions button.submit{background:#FCE07C;color:#5c0b15}
+.actions button.draft{background:#FFF8E6}
+.actions .badge{display:inline-block;min-width:16px;background:#5c0b15;color:#fff;border-radius:99px;padding:0 5px;font-size:11px;text-align:center}
+.recitem{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:8px 0;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.recinfo{flex:1 1 240px;min-width:0}
+.rectitle{font-weight:700;color:var(--head)}
+.recdate{margin-left:8px;font-size:12px;color:#888;font-weight:400}
+.recmeta{font-size:12px;color:#777;margin-top:2px}
+.recops{display:flex;gap:6px;flex-wrap:wrap}
+.mbtn.mini{padding:4px 10px;font-size:12px}
+.mbtn.danger{background:#fdeaea;color:#b3261e}
+.recempty{color:#888;font-size:13px;padding:10px 2px}
+#recText{width:100%;min-height:40vh;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12.5px;line-height:1.7;resize:vertical}
+
+/* print */
+@media print{
+  header.top,.nav,.legend,.stickact,.actions,footer,.mfoot{display:none!important}
+  body{background:#fff;font-size:12px}
+  .wrap{max-width:100%;padding:0}
+  section.sec{max-width:100%;margin:0 0 14px}
+  .card{break-inside:avoid;box-shadow:none;margin:8px 0}
+  .pbar,i{display:none}
+  input.blank{border-bottom:1px solid #999}
+  textarea.blank{border:1px solid #bbb;min-height:36px}
+  .opt,.chip{border:1px solid #777}
+  table.frm{font-size:11px;min-width:0}
+  .upfile,.upbtn{display:none}
+  .thumb{max-height:60px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <div class="toprow">
+      <div class="brand">7号衣库 · 门店商品差异化对话话术</div>
+      <div class="actions">
+        <button type="button" id="btnSpeech">收起话术</button>
+        <button type="button" id="btnExport">导出反馈</button>
+        <button type="button" id="btnRecs">提交记录 <span class="badge" id="recCount">0</span></button>
+        <button type="button" class="draft" id="btnDraft">暂时保存 <span class="badge" id="draftCount">0</span></button>
+        <button type="button" class="submit" id="btnSubmit">提交</button>
+        <button type="button" id="btnPrint">打印 / PDF</button>
+        <button type="button" class="danger" id="btnClear">清空本店</button>
+      </div>
+    </div>
+    <div class="metagrid" id="metaBox">
+      <div class="meta"><label>门店名称</label><input id="f_store" list="storeList" placeholder="如：门店代码+门店名称" autocomplete="off"></div>
+      <div class="meta"><label>访谈日期</label><input id="f_date" type="date"></div>
+      <div class="meta"><label>督导</label><input id="f_dudao" placeholder="姓名"></div>
+      <div class="meta"><label>受访店长/店员</label><input id="f_partner" placeholder="姓名 / 岗位"></div>
+    </div>
+    <datalist id="storeList"></datalist>
+    <div class="progress"><span id="progTxt">已完成 0 / 0 组</span><div class="pbar"><i id="progBar"></i></div><span id="saveState">未保存</span></div>
+  </div>
+</header>
+<div class="nav"><div class="navin" id="nav"></div></div>
+<div class="legend">
+  <span><i class="lg-s">灰色斜体</i>＝ 沟通话术 / 引导提示，照着问即可</span>
+  <span><i class="lg-y">酒红追问框</i>＝ 需要追问 / 向店长解释的重点，别跳过</span>
+  <span><i class="lg-b">浅黄说明框</i>＝ 督导注意点 / 填写示例</span>
+  <span>黄色<mark style="background:#FFFF00;padding:0 4px">高亮</mark>＝ 关键引导词</span>
+</div>
+<main class="wrap" id="app">
+<!-- ============ 二、开场寒暄 ============ -->
+<section class="sec" data-sec="开场寒暄">
+  <div class="sectop"><h2>开场寒暄</h2><span class="tm">约 5 分钟</span></div>
+  <div class="card">
+    <div class="qtitle"><span class="qno">话术</span><span>寒暄 + 说明来意</span></div>
+    <div class="script"><span class="mark">💬</span> “X 姐 / X 哥，好久不见！最近忙不忙？开学季 / 换季的，客人多吧？”</div>
+    <div class="hint">（让对方接话 1～2 分钟，主动说点店里的事）</div>
+    <div class="script"><span class="mark">💬</span> “我这次来主要是想听听你们一线的声音——咱们商品这块在不同门店到底差在哪儿。咱们边聊边记，最后我整理成信息回给商品部，追单、补货、分货都用得上。你们有啥说啥就行，不是考核。”</div>
+    <div class="script">—— <b>自然过渡</b>（话锋一转进入第一段）：</div>
+    <div class="script"><span class="mark">💬</span> “咱们先聊聊——来你这儿的客人，整体上是些什么样的人？”</div>
+  </div>
+</section>
+
+<!-- ============ 三、第一段：进店客人整体画像 ============ -->
+<section class="sec" data-sec="第一段·进店客人画像">
+  <div class="sectop"><h2>第一段 · 进店的客人整体是什么样（客群）</h2><span class="tm">约 12 分钟</span></div>
+  <div class="card"><div class="hint">设计意图：从<b>整体视角</b>出发，不问单个顾客。店员对整体客群有感觉，但对单个顾客记不了那么细。</div></div>
+
+  <!-- 3.1 -->
+  <div class="card q" data-q="1.1 性别占比（整体观察）">
+    <div class="qtitle"><span class="qno">1.1</span><span>性别占比</span><span class="dur">整体观察</span></div>
+    <div class="script"><span class="mark">💬</span> “来店里的客人，男女比例大概是怎么样的？”</div>
+    <div class="opts" data-group="性别占比">
+      <label class="opt"><input type="checkbox" name="sex">女多男少</label>
+      <label class="opt"><input type="checkbox" name="sex">男多女少</label>
+      <label class="opt"><input type="checkbox" name="sex">男女差不多</label>
+    </div>
+  </div>
+
+  <!-- 1.2 年龄段 -->
+  <div class="card q" data-q="1.2 客群年龄段（区分男女）">
+    <div class="qtitle"><span class="qno">1.2</span><span>客群年龄段（区分男女）</span></div>
+    <div class="script"><span class="mark">💬</span> “进店的客人，主要是哪个年龄段的多？男女分开看。”</div>
+    <div class="tblwrap"><table class="frm">
+      <thead><tr><th>年龄段</th><th>☐ 儿童</th><th>☐ 学生</th><th>☐ 青年</th><th>☐ 中年</th><th>☐ 老年</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">男客</td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td></tr>
+        <tr><td class="rk">女客</td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td>
+          <td><label class="chip"><input type="checkbox">多</label></td></tr>
+      </tbody>
+    </table></div>
+    <div class="hint tiny">（哪一格打勾代表该性别该年龄段客人多；可多选多格）</div>
+  </div>
+
+  <!-- 1.3 身形 -->
+  <div class="card q" data-q="1.3 身形（分男女）">
+    <div class="qtitle"><span class="qno">1.3</span><span>身形</span><span class="dur">分男女记录</span></div>
+    <div class="script"><span class="mark">💬</span> “身形方面，男客和女客分别大概是什么体型？”</div>
+    <div class="tblwrap"><table class="frm">
+      <thead><tr><th>客群</th><th>☐ 偏瘦</th><th>☐ 标准</th><th>☐ 微胖</th><th>☐ 高大偏壮</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">男客</td>
+          <td><label class="chip"><input type="checkbox">XS / S</label></td>
+          <td><label class="chip"><input type="checkbox">M / L</label></td>
+          <td><label class="chip"><input type="checkbox">XL / 2XL</label></td>
+          <td><label class="chip"><input type="checkbox">3XL 及以上</label></td></tr>
+        <tr><td class="rk">女客</td>
+          <td><label class="chip"><input type="checkbox">XS / S</label></td>
+          <td><label class="chip"><input type="checkbox">M / L</label></td>
+          <td><label class="chip"><input type="checkbox">XL / 2XL</label></td>
+          <td><label class="chip"><input type="checkbox">3XL 及以上</label></td></tr>
+        <tr><td class="rk">童客</td>
+          <td><label class="chip"><input type="checkbox">90 / 100</label></td>
+          <td><label class="chip"><input type="checkbox">110 / 120</label></td>
+          <td><label class="chip"><input type="checkbox">130 / 140</label></td>
+          <td><label class="chip"><input type="checkbox">150 / 160</label></td></tr>
+      </tbody>
+    </table></div>
+    <div class="ybox"><span class="h">为什么身形要分男女：</span>男装女装尺码体系不同（男 L≈175/96A，女 L≈165/88A），“微胖”的视觉判断标准也不同；更重要的是——<b>男大码和女大码是两条不同的供应链</b>，备货、追单、找供应商都得分开看。混在一起报，数据就没法用了。</div>
+  </div>
+
+  <!-- 3.4 -->
+  <div class="card q" data-q="1.4 进店主流穿着风格">
+    <div class="qtitle"><span class="qno">1.4</span><span>进店主流穿着风格</span><span class="dur">挑最主流的 2～3 种</span></div>
+    <div class="script"><span class="mark">💬</span> “进店的客人，一般穿什么样的衣服来？挑最主流的 2～3 种。”</div>
+    <div class="qtitle"><span style="color:#444">女：</span></div>
+    <div class="opts" data-group="女装风格">
+      <label class="opt"><input type="checkbox">潮流辣妹女（短上衣 / 工装裤 / 厚底鞋）</label>
+      <label class="opt"><input type="checkbox">通勤简约女（衬衫 / 西装裤 / 小皮鞋）</label>
+      <label class="opt"><input type="checkbox">休闲舒适女（T / 卫裤 / 运动鞋）</label>
+      <label class="opt"><input type="checkbox">气质温柔女（针织 / 连衣裙）</label>
+      <label class="opt"><input type="checkbox">带娃家长（推车 / 妈咪包 / 孩子同行）</label>
+      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px;margin-left:2px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder="写一下"></span>
+    </div>
+    <div class="qtitle"><span style="color:#444">男：</span></div>
+    <div class="opts" data-group="男装风格">
+      <label class="opt"><input type="checkbox">通勤简约男（衬衫 / 西装裤 / 小皮鞋）</label>
+      <label class="opt"><input type="checkbox">简约日常男（T / 直筒裤 / 运动鞋）</label>
+      <label class="opt"><input type="checkbox">潮男（工装裤 / 板鞋）</label>
+      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px;margin-left:2px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder="写一下"></span>
+    </div>
+  </div>
+
+  <!-- 1.5 客群基本盘 -->
+  <div class="card q" data-q="1.5 客群基本盘（工作 / 家庭 / 熟客）">
+    <div class="qtitle"><span class="qno">1.5</span><span>客群基本盘：做什么工作 / 家庭客 / 熟客</span></div>
+    <div class="script"><span class="mark">💬</span> “整体看下来，这些客人主要是做什么的？家庭客多不多？有没有常来的熟客？”</div>
+    <div class="fillline"><span class="fl">整体客群看着是做什么工作的：</span><input class="blank full" placeholder="如：周边工厂务工、社区上班族、接送娃家长…"></div>
+    <div class="fillline" style="margin-top:8px"><span class="fl">家庭客多不多、有没有娃：</span>
+      <label class="chip"><input type="checkbox">家庭客多、普遍带娃</label>
+      <label class="chip"><input type="checkbox">家庭客一般、偶尔带娃</label>
+      <label class="chip"><input type="checkbox">以个人客为主</label>
+      <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:24%" placeholder="写一下"></div>
+    <div class="fillline" style="margin-top:8px;align-items:center;flex-wrap:wrap">
+      <span class="fl">是否有熟客：</span>
+      <label class="chip" data-cond="freq" data-val="有" data-target="freqBox"><input type="checkbox">有</label>
+      <label class="chip"><input type="checkbox">无</label>
+      <span class="condbox" id="freqBox" style="display:none;width:100%;margin-top:6px">
+        <span class="fl">一个月来店几次：</span>
+        <label class="opt"><input type="checkbox">1~2 次</label>
+        <label class="opt"><input type="checkbox">3~4 次</label>
+        <label class="opt"><input type="checkbox">5 次及以上</label>
+      </span>
+    </div>
+  </div>
+
+  <!-- 1.6 -->
+  <div class="card q" data-q="1.6 进店动机">
+    <div class="qtitle"><span class="qno">1.6</span><span>进店动机</span></div>
+    <div class="script"><span class="mark">💬</span> “客人进店，一般是有明确目标，还是随便逛逛？”</div>
+    <div class="opts" data-group="进店动机">
+      <label class="opt" data-cond="motive" data-val="明确" data-target="motiveMingque"><input type="checkbox">大多有明确目标，直奔某款</label>
+      <label class="opt" data-cond="motive" data-val="逛逛" data-target="motiveGuangguang"><input type="checkbox">大多随便逛，被吸引才停</label>
+    </div>
+    <div class="ybox condbox" id="motiveMingque" style="display:none">
+      <div class="h"><mark>追问：有明确目标的，一般直奔什么品类？</mark></div>
+      <div class="row"><span class="fl">品类：</span><input class="blank" style="width:60%" placeholder="如：男裤 / 卫衣"></div>
+      <div class="row"><mark>这个品类咱们有没有？</mark>
+        <label class="chip"><input type="checkbox">有</label>
+        <label class="chip"><input type="checkbox">没有，一般缺：</label><input class="blank" style="width:40%" placeholder="缺什么"></div>
+    </div>
+    <div class="ybox condbox" id="motiveGuangguang" style="display:none">
+      <div class="h"><mark>追问：选“被吸引才停”的，一般被什么吸引？</mark></div>
+      <div class="row">
+        <label class="chip"><input type="checkbox">被广告牌吸引</label>
+        <label class="chip"><input type="checkbox">被陈列吸引</label>
+        <label class="chip"><input type="checkbox">被促销吸引</label>
+        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:24%" placeholder="写一下"></div>
+    </div>
+  </div>
+
+  <!-- 3.7 -->
+  <div class="card q" data-q="1.7 代购比例（整体）">
+    <div class="qtitle"><span class="qno">1.7</span><span>代购比例</span><span class="dur">整体估算</span></div>
+    <div class="script"><span class="mark">💬</span> “来买衣服的，是自己穿的多，还是给家人带的多？”</div>
+    <div class="opts" data-group="代购比例">
+      <label class="opt"><input type="checkbox">自己买为主</label>
+      <label class="opt"><input type="checkbox">给家人带为主</label>
+      <label class="opt"><input type="checkbox">两者差不多</label>
+    </div>
+    <div class="ybox">
+      <div class="h">追问 1：给家人带的，一般是给谁？（可多选）</div>
+      <div class="row">
+        <label class="chip"><input type="checkbox">老公 / 男友</label>
+        <label class="chip"><input type="checkbox">妈妈 / 婆婆</label>
+        <label class="chip"><input type="checkbox">爸爸 / 公公</label>
+        <label class="chip"><input type="checkbox">孩子</label>
+        <label class="chip"><input type="checkbox">朋友 / 同事</label>
+        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:26%" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 2：给家人买的时候，咱们店凑得齐吗？</div>
+      <div class="row">
+        <label class="chip"><input type="checkbox">凑得齐</label>
+        <label class="chip"><input type="checkbox">凑不齐，一般缺：</label><input class="blank" style="width:40%" placeholder="品类 / 款 / 尺码 / 色"></div>
+      <div class="h" style="margin-top:8px">追问 3：女性购买男装的比例大概多少？</div>
+      <div class="row"><span class="fl">女性买男装占比约：</span><input class="blank" style="width:30%" placeholder="如 10% / 三成">　<label class="chip"><input type="checkbox">几乎没</label><label class="chip"><input type="checkbox">偶尔有</label><label class="chip"><input type="checkbox">挺常见</label></div>
+      <div class="h" style="margin-top:8px">追问 4：买完需要邮寄的比例？哪些时段邮寄客人多？</div>
+      <div class="row"><span class="fl">需要邮寄比例：</span><input class="blank" style="width:30%" placeholder="如 5%">
+        <span class="fl" style="margin-left:8px">邮寄高峰时段：</span>
+        <label class="chip"><input type="checkbox">节假日前</label>
+        <label class="chip"><input type="checkbox">周末</label>
+        <label class="chip"><input type="checkbox">平日</label>
+        <label class="chip"><input type="checkbox">大促期间</label></div>
+    </div>
+  </div>
+</section>
+<!-- ============ 四、第二段：最近一两周的商品规律 ============ -->
+<section class="sec" data-sec="第二段·商品规律">
+  <div class="sectop"><h2>第二段 · 最近一两周的商品规律</h2><span class="tm">约 15 分钟 · 核心</span></div>
+  <div class="card">
+    <div class="script">—— <b>督导话术</b>（从客群过渡到商品）：<span class="mark">💬</span> “客群聊完了。再聊聊商品——这一两周，<b>问得最多</b>、<b>卖得最多</b>、<b>问了没货</b>的，分别是什么？”</div>
+  </div>
+
+  <!-- 4.1 -->
+  <div class="card q" data-q="2.1 问询 TOP3">
+    <div class="qtitle"><span class="qno">2.1</span><span>问询 TOP3</span><span class="dur">顾客最常问 / 找的款</span></div>
+    <div class="script"><span class="mark">💬</span> “这一两周，顾客进店问得最多的 3 个款是？具体到品类 + 款型 + 颜色 + 尺码。”</div>
+    <div class="tblwrap"><table class="frm" id="tblInq">
+      <thead><tr><th>排名</th><th>品类</th><th>款型</th><th>颜色</th><th>尺码</th><th>价格带</th><th>顾客原话</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">①</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格带" placeholder="如 ¥99~159"></td><td><input class="blank" data-c="顾客原话"></td></tr>
+        <tr><td class="rk">②</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格带"></td><td><input class="blank" data-c="顾客原话"></td></tr>
+        <tr><td class="rk">③</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格带"></td><td><input class="blank" data-c="顾客原话"></td></tr>
+      </tbody>
+    </table></div>
+    <div class="ybox">
+      <div class="h">追问 1：问完后大多买到了吗？</div>
+      <div class="row"><label class="chip"><input type="checkbox">都买到了</label>
+        <label class="chip"><input type="checkbox">部分没买到</label> —— 哪款？为什么？<input class="blank" style="width:45%" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 2：这一两年，顾客问的款式有变化吗？</div>
+      <div class="row"><label class="chip"><input type="checkbox">有明显变化</label> —— 变成什么了？<input class="blank" style="width:45%" placeholder="写一下"></div>
+      <div class="grayeg">eg. 今年七分裤流行，问得多</div>
+      <div class="row"><label class="chip"><input type="checkbox">差不多</label></div>
+    </div>
+  </div>
+
+  <!-- 4.2 -->
+  <div class="card q" data-q="2.2 成交 TOP3">
+    <div class="qtitle"><span class="qno">2.2</span><span>成交 TOP3</span><span class="dur">实际卖得最多的款</span></div>
+    <div class="script"><span class="mark">💬</span> “这一两周，卖得最多的 3 个款？请具体到品类 + 款 + 色 + 码 + 件数。”</div>
+    <div class="hint"><b>说明：引流款除外。</b>只记真正产生营收、有利润的款；9.9 / 19.9 促销引流特价款不计入 TOP3。</div>
+    <div class="tblwrap"><table class="frm" id="tblSold">
+      <thead><tr><th>排名</th><th>品类</th><th>款型</th><th>颜色</th><th>尺码</th><th>价格</th><th>件数</th><th>卖得动的原因</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">①</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格"></td><td><input class="blank" data-c="件数" style="width:70px"></td><td><input class="blank" data-c="原因"></td></tr>
+        <tr><td class="rk">②</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格"></td><td><input class="blank" data-c="件数"></td><td><input class="blank" data-c="原因"></td></tr>
+        <tr><td class="rk">③</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格"></td><td><input class="blank" data-c="件数"></td><td><input class="blank" data-c="原因"></td></tr>
+      </tbody>
+    </table></div>
+    <div class="ybox">
+      <div class="h">追问 1：卖的跟问的对得上吗？有没有“问多卖少”的？</div>
+      <div class="row"><label class="chip"><input type="checkbox">对得上</label>
+        <label class="chip"><input type="checkbox">有</label> —— 哪款问多卖少？为什么？<input class="blank" style="width:45%" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 2：这几款卖得快，是因为——</div>
+      <div class="row">
+        <label class="chip"><input type="checkbox">今年新上的款</label>
+        <label class="chip"><input type="checkbox">去年延续的款</label>
+        <label class="chip"><input type="checkbox">一直都好卖的老款</label>
+        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:26%" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 3：卖得多的原因主要是？（可多选）</div>
+      <div class="row">
+        <label class="chip"><input type="checkbox">颜色</label>
+        <label class="chip"><input type="checkbox">面料</label>
+        <label class="chip"><input type="checkbox">图案</label>
+        <label class="chip"><input type="checkbox">款式</label>
+        <label class="chip"><input type="checkbox">价格</label>
+        <label class="chip"><input type="checkbox">陈列</label>
+        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:26%" placeholder="写一下"></div>
+    </div>
+  </div>
+
+  <!-- 4.3 -->
+  <div class="card q" data-q="2.3 试穿多但没成交的款">
+    <div class="qtitle"><span class="qno">2.3</span><span>试穿多但没成交的款</span><span class="dur">顺手挖 · 约 1 分钟</span></div>
+    <div class="script"><span class="mark">💬</span> “最近这两周，试衣间试得多但最后没买的，最多的是哪款？”</div>
+    <div class="tblwrap"><table class="frm" id="tblTrial">
+      <thead><tr><th>商品款号（扫码 / 手动）</th><th>商品照片</th><th>没买原因（可多选 / 补写）</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:160px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="trial1"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+          </td>
+          <td>
+            <div class="uprow">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="trial1"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td>
+            <label class="chip"><input type="checkbox">太贵</label>
+            <label class="chip"><input type="checkbox">没合适尺码</label>
+            <label class="chip"><input type="checkbox">上身不如挂板</label>
+            <label class="chip"><input type="checkbox">面料不喜欢</label>
+            <label class="chip"><input type="checkbox">颜色不喜欢</label>
+            <label class="chip"><input type="checkbox">家人不认</label>
+            <label class="chip"><input type="checkbox">要再逛逛</label>
+            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下"></span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:160px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="trial2"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+          </td>
+          <td>
+            <div class="uprow">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="trial2"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td>
+            <label class="chip"><input type="checkbox">太贵</label>
+            <label class="chip"><input type="checkbox">没合适尺码</label>
+            <label class="chip"><input type="checkbox">上身不如挂板</label>
+            <label class="chip"><input type="checkbox">面料不喜欢</label>
+            <label class="chip"><input type="checkbox">颜色不喜欢</label>
+            <label class="chip"><input type="checkbox">家人不认</label>
+            <label class="chip"><input type="checkbox">要再逛逛</label>
+            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下"></span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:160px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="trial3"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+          </td>
+          <td>
+            <div class="uprow">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="trial3"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td>
+            <label class="chip"><input type="checkbox">太贵</label>
+            <label class="chip"><input type="checkbox">没合适尺码</label>
+            <label class="chip"><input type="checkbox">上身不如挂板</label>
+            <label class="chip"><input type="checkbox">面料不喜欢</label>
+            <label class="chip"><input type="checkbox">颜色不喜欢</label>
+            <label class="chip"><input type="checkbox">家人不认</label>
+            <label class="chip"><input type="checkbox">要再逛逛</label>
+            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下"></span></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- 4.4 -->
+  <div class="card q" data-q="2.4 缺货 TOP3">
+    <div class="qtitle"><span class="qno">2.4</span><span>缺货 TOP3</span><span class="dur">“顾客问了没货”+“店里一直缺”</span></div>
+    <div class="script"><span class="mark">💬</span> “这一两周，有没有顾客问‘有没有 XX’但店里没有？或者你觉得这家店<b>一直缺</b>的货是什么？最让你印象深的 3 个。”</div>
+    <div class="tblwrap"><table class="frm" id="tblMiss">
+      <thead><tr><th>排名</th><th>缺的款（品类+款型+色）</th><th>缺什么</th><th>频次</th><th>补齐能卖多少</th></tr></thead>
+      <tbody id="tblMissBody">
+      </tbody>
+    </table></div>
+    <div class="ybox">
+      <div class="h">追问 1：这是“季节性缺”（这个季节缺，过阵子就有）还是“结构性缺”（一直缺）？</div>
+      <div class="row"><label class="chip"><input type="checkbox">季节性缺</label> —— 什么季节？<input class="blank" style="width:35%" placeholder="写一下"></div>
+      <div class="row"><label class="chip"><input type="checkbox">结构性缺</label> —— 大概缺了多久？<input class="blank" style="width:35%" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 2：顾客有没有说过“要是你们能卖 XX 就好了”？</div>
+      <div class="row"><label class="chip"><input type="checkbox">有</label> —— 原话：<input class="blank" style="width:55%" placeholder="顾客原话"></div>
+      <div class="row"><label class="chip"><input type="checkbox">没有</label></div>
+    </div>
+    <div class="bbx">💡 <b>说明：</b>这一项综合了“顾客问了没货”和“店里一直缺”两个维度，督导一次问完，不要分开问两遍。</div>
+  </div>
+
+  <!-- 4.5 滞销款 -->
+  <div class="card q" data-q="2.5 滞销款">
+    <div class="qtitle"><span class="qno">2.5</span><span>滞销款（卖不动的 TOP3）</span><span class="dur">上传款号 + 照片</span></div>
+    <div class="script"><span class="mark">💬</span> “压在架上、一直卖不动的是哪 3 个款？把款号和照片留一下。”</div>
+    <div class="tblwrap"><table class="frm" id="tblDead">
+      <thead><tr><th>商品款号（扫码 / 手动）</th><th>商品照片</th><th>针对滞销做了什么措施（可多选）</th><th>措施后依旧卖不动的原因</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:160px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="dead1"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+          </td>
+          <td>
+            <div class="uprow">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="dead1"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td>
+            <label class="opt"><input type="checkbox">挂上店长推荐牌</label>
+            <label class="opt"><input type="checkbox">店员多推荐</label>
+            <label class="opt"><input type="checkbox">调整陈列</label>
+            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下"></span>
+          </td>
+          <td><textarea class="blank" placeholder="为什么还是卖不动？"></textarea></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:160px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="dead2"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+          </td>
+          <td>
+            <div class="uprow">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="dead2"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td>
+            <label class="opt"><input type="checkbox">挂上店长推荐牌</label>
+            <label class="opt"><input type="checkbox">店员多推荐</label>
+            <label class="opt"><input type="checkbox">调整陈列</label>
+            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下"></span>
+          </td>
+          <td><textarea class="blank" placeholder="为什么还是卖不动？"></textarea></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:160px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="dead3"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+          </td>
+          <td>
+            <div class="uprow">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="dead3"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td>
+            <label class="opt"><input type="checkbox">挂上店长推荐牌</label>
+            <label class="opt"><input type="checkbox">店员多推荐</label>
+            <label class="opt"><input type="checkbox">调整陈列</label>
+            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下"></span>
+          </td>
+          <td><textarea class="blank" placeholder="为什么还是卖不动？"></textarea></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- 4.6 配饰需求 -->
+  <div class="card q" data-q="2.6 配饰需求（内裤 / 拖鞋）">
+    <div class="qtitle"><span class="qno">2.6</span><span>配饰需求：内裤 / 拖鞋</span></div>
+    <div class="script"><span class="mark">💬</span> “内裤、拖鞋这类配饰，客人问得多不多？需求是什么样？”</div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>● 内裤</span></div>
+    <div class="fillline"><span class="fl">内裤需求度：</span>
+      <label class="chip"><input type="checkbox">几乎没人问</label>
+      <label class="chip"><input type="checkbox">偶尔有人问</label>
+      <label class="chip"><input type="checkbox">经常有人问、缺货</label></div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">内裤考虑的面料：</span><input class="blank full" placeholder="如：纯棉、莫代尔、冰丝…"></div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">内裤码数需求：</span><input class="blank full" placeholder="如：均码为主、需要加大码、L/XL 多…"></div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">内裤颜色需求：</span><input class="blank full" placeholder="如：黑/白/灰基础色、莫兰迪色…"></div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">内裤款式需求：</span><input class="blank full" placeholder="如：平角、三角、无痕、高腰收腹…"></div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:10px"><span>● 拖鞋</span></div>
+    <div class="fillline"><span class="fl">什么客群问 / 买得多：</span><input class="blank full" placeholder="如：居家阿姨、学生、夏天游客…"></div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">拖鞋款式需求：</span><input class="blank full" placeholder="如：人字拖、洞洞鞋、居家棉拖…"></div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">拖鞋颜色需求：</span><input class="blank full" placeholder="写一下"></div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">拖鞋尺码需求：</span><input class="blank full" placeholder="如：偏大码需求多、需要 44+…"></div>
+  </div>
+</section>
+
+<!-- ============ 三（新增）、第三段：顾客眼里 ============ -->
+<section class="sec" data-sec="第三段·顾客眼里">
+  <div class="sectop"><h2>第三段 · 顾客眼里，我们哪里好、哪里待改</h2><span class="tm">约 6 分钟</span></div>
+  <div class="card"><div class="hint">设计意图：从顾客视角补一刀——店长自己未必意识到的好与痛，往往藏在回头客反馈和流失原因里。</div></div>
+
+  <!-- 3.1 -->
+  <div class="card q" data-q="3.1 顾客最认可的点">
+    <div class="qtitle"><span class="qno">3.1</span><span>顾客最认可我们哪些点？</span></div>
+    <div class="script"><span class="mark">💬</span> “从回头客、成交后的反馈看，客人最买账咱们的是什么？”</div>
+    <div class="opts" data-group="认可点">
+      <label class="opt"><input type="checkbox">价格实惠</label>
+      <label class="opt"><input type="checkbox">面料舒服</label>
+      <label class="opt"><input type="checkbox">版型上身好</label>
+      <label class="opt"><input type="checkbox">码数齐全</label>
+      <label class="opt"><input type="checkbox">款式更新快</label>
+      <label class="opt"><input type="checkbox">品质稳、耐穿</label>
+      <label class="opt"><input type="checkbox">导购推荐准、不硬推</label>
+      <label class="opt"><input type="checkbox">售后换码退换方便</label>
+      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder="写一下"></span>
+    </div>
+  </div>
+
+  <!-- 3.2 -->
+  <div class="card q" data-q="3.2 顾客抱怨犹豫流失原因">
+    <div class="qtitle"><span class="qno">3.2</span><span>顾客抱怨 / 犹豫 / 流失的原因</span></div>
+    <div class="script"><span class="mark">💬</span> “客人抱怨最多、犹豫不买、或者干脆流失，你听到的是哪些？”</div>
+    <div class="opts" data-group="痛点">
+      <label class="opt"><input type="checkbox">觉得贵</label>
+      <label class="opt"><input type="checkbox">想要的款没货 / 断码</label>
+      <label class="opt"><input type="checkbox">款式老、上新慢</label>
+      <label class="opt"><input type="checkbox">质量不耐穿（起球、变形、褪色）</label>
+      <label class="opt"><input type="checkbox">尺码偏小或偏大</label>
+      <label class="opt"><input type="checkbox">面料不透气</label>
+      <label class="opt"><input type="checkbox">试衣不方便</label>
+      <label class="opt"><input type="checkbox">导购推得太猛</label>
+      <label class="opt"><input type="checkbox">门店环境乱、灯光暗、空调不凉快/热、过道窄</label>
+      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder="写一下"></span>
+    </div>
+  </div>
+
+  <!-- 3.3 -->
+  <div class="card q" data-q="3.3 找码数找款的方式">
+    <div class="qtitle"><span class="qno">3.3</span><span>顾客找码数 / 找款的方式</span></div>
+    <div class="script"><span class="mark">💬</span> “顾客来找码数、找款的时候，是死磕指定那一个，还是愿意听店员推荐其他的？”</div>
+    <div class="opts" data-group="找款方式">
+      <label class="opt"><input type="checkbox">基本只要指定码 / 指定款</label>
+      <label class="opt"><input type="checkbox">愿意接受店员推荐其他码 / 其他款</label>
+      <label class="opt"><input type="checkbox">看情况，两者都有</label>
+    </div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">备注（什么情况下会接受推荐）：</span><input class="blank full" placeholder="写一下"></div>
+  </div>
+</section>
+
+<!-- ============ 四、门店自身情况 ============ -->
+<section class="sec" data-sec="门店自身情况">
+  <div class="sectop"><h2>第四段 · 门店自身情况</h2><span class="tm">约 8 分钟</span></div>
+  <div class="card"><div class="hint">设计意图：环境、宣传、人员是门店的“硬条件”，直接影响货怎么摆、怎么卖、话术怎么落地。先记客观事实，再让店长做主观定位（下段）。</div></div>
+
+  <!-- 4.1 门店环境 -->
+  <div class="card q" data-q="4.1 门店环境">
+    <div class="qtitle"><span class="qno">4.1</span><span>门店环境</span></div>
+    <div class="script"><span class="mark">💬</span> “咱们店这一亩三分地你自己最清楚——光线、温度、货架挤不挤，客人一进门就感受得到。咱们一项项过。”</div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>光线是否充足</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="envLight">充足</label>
+      <label class="opt"><input type="radio" name="envLight">偏暗</label>
+      <label class="opt"><input type="radio" name="envLight">部分区域暗（试衣间 / 角落）</label>
+    </div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>空调 / 风扇是否充足</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="envAC">充足</label>
+      <label class="opt"><input type="radio" name="envAC">不足（夏季闷热）</label>
+      <label class="opt"><input type="radio" name="envAC">不足（冬季偏冷）</label>
+      <label class="opt"><input type="radio" name="envAC">时好时坏</label>
+    </div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>货架是否太密集、过道太拥挤</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="envShelf">宽敞</label>
+      <label class="opt"><input type="radio" name="envShelf">略挤</label>
+      <label class="opt"><input type="radio" name="envShelf">太密集、过道拥挤</label>
+    </div>
+
+    <div class="fillline"><span class="fl">其他（环境方面）：</span><input class="blank wide" placeholder="写一下"></div>
+    <div class="bbx">光线暗、过道挤会直接劝退带娃家长和大码客群——和第一段客群、第四段本地差异要对照看。比如你说周边大码多，但过道挤，人家根本逛不动。</div>
+  </div>
+
+  <!-- 4.2 门店宣传 -->
+  <div class="card q" data-q="4.2 门店宣传">
+    <div class="qtitle"><span class="qno">4.2</span><span>门店宣传</span></div>
+    <div class="script"><span class="mark">💬</span> “平时怎么把客人引进门？都靠路过，还是有主动吆喝？”</div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>宣传方式（可多选）</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">社群运营</label>
+      <label class="opt"><input type="checkbox">门口喇叭 / 海报</label>
+      <label class="opt"><input type="checkbox">老客口口相传</label>
+      <label class="opt"><input type="checkbox">短视频</label>
+      <label class="opt"><input type="checkbox">地推</label>
+      <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下"></span>
+    </div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>宣传频率</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="promFreq">每天</label>
+      <label class="opt"><input type="radio" name="promFreq">每周几次</label>
+      <label class="opt"><input type="radio" name="promFreq">只在大促做</label>
+      <label class="opt"><input type="radio" name="promFreq">基本不做</label>
+    </div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>宣传辐射范围</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="promRange">周边 1~3 公里</label>
+      <label class="opt"><input type="radio" name="promRange">周边 3~8 公里</label>
+      <label class="opt"><input type="radio" name="promRange">整个镇 / 片区</label>
+    </div>
+    <div class="bbx">辐射范围要和第一段客群、第四段本地差异交叉验证——比如你说辐射 3 公里却只做社区客，可能漏了远端客群；反之只做本小区却说辐射 3 公里，说明宣传没到位。</div>
+  </div>
+
+  <!-- 4.3 门店人员情况 -->
+  <div class="card q" data-q="4.3 门店人员情况">
+    <div class="qtitle"><span class="qno">4.3</span><span>门店人员情况</span></div>
+    <div class="script"><span class="mark">💬</span> “带团队这块，你现在几个人、稳不稳？新老搭配怎么样？”</div>
+
+    <div class="fillline"><span class="fl">人员数量：正式</span><input class="blank" style="width:80px" placeholder="人"><span class="fl">　兼职工</span><input class="blank" style="width:80px" placeholder="人"></div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:8px"><span>人员稳定性</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="staffStable">稳定</label>
+      <label class="opt"><input type="radio" name="staffStable">流动大</label>
+      <label class="opt"><input type="radio" name="staffStable">季节性波动（节假日临时加人）</label>
+    </div>
+
+    <div class="fillline" style="margin-top:8px"><span class="fl">新旧员工比例：老员工</span><input class="blank" style="width:70px" placeholder="人"><span class="fl">（在职 ≥ 1 年）</span><span class="fl">　新员工</span><input class="blank" style="width:70px" placeholder="人">　（或占比：新员工约 <input class="blank" style="width:60px" placeholder="%">）</div>
+    <div class="hint tiny">说明：老员工指在本店连续在职 ≥ 1 年、熟悉货品与客群的店员；新员工指不足 1 年或新入职。</div>
+
+    <div class="qtitle" style="font-size:14px;margin-top:8px"><span>人员所在专区是否固定</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="staffZone">固定专区</label>
+      <label class="opt"><input type="radio" name="staffZone">不固定、轮岗</label>
+      <label class="opt"><input type="radio" name="staffZone">忙时灵活调配</label>
+    </div>
+    <div class="bbx">专区不固定会导致“谁都不熟某类货”，影响成交转化和第三段特色专区落地——和 2.2 成交 TOP3、第三段卖得动/不动的原因对照看。</div>
+  </div>
+</section>
+
+<!-- ============ 五、这家店的“调性” ============ -->
+<section class="sec" data-sec="门店调性">
+  <div class="sectop"><h2>第五段 · 这家店的“调性”</h2><span class="tm">约 8 分钟 · 核心</span></div>
+  <div class="card"><div class="hint">设计意图：让店长 / 店员自己总结“这家店”——比督导下结论更准。</div></div>
+
+  <!-- 5.1 -->
+  <div class="card q" data-q="5.1 一句话定位">
+    <div class="qtitle"><span class="qno">5.1</span><span>一句话定位</span><span class="dur">开放式，不给选项</span></div>
+    <div class="script"><span class="mark">💬</span> “如果让你用一句话定位这家店——<b>主要卖什么给谁</b>——你会怎么说？”</div>
+    <div class="fillline"><span class="fl">答：</span><input class="blank full" placeholder="参考：周边 3 公里工厂通勤男的“性价比商务通勤店” / 社区妈妈的“日常 + 亲子”店 / 学校门口的学生基础款店"></div>
+  </div>
+
+  <!-- 5.2 -->
+  <div class="card q" data-q="5.2 卖得最好 / 最差风格">
+    <div class="qtitle"><span class="qno">5.2</span><span>卖得最好 / 最差的风格</span><span class="dur">整体风格层，不是具体款</span></div>
+    <div class="script"><span class="mark">💬</span> “这家店<b>卖得最好</b>的是什么风格？<b>卖不动</b>的是什么风格？”</div>
+    <div class="tblwrap"><table class="frm">
+      <thead><tr><th>维度</th><th>风格</th><th>举 1~2 个具体款</th><th>卖得动 / 不动的原因</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="rk">卖得最好</td>
+          <td><input class="blank" style="min-width:120px" placeholder="如：商务通勤 / 学院风"></td>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:120px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="styleBest"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+            <div class="uprow" style="margin-top:4px">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="styleBest"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td><textarea class="blank" placeholder="为什么卖得动 / 卖不动？"></textarea></td>
+        </tr>
+        <tr>
+          <td class="rk">卖不动</td>
+          <td><input class="blank" style="min-width:120px" placeholder="如：韩版宽松 / 印花大T"></td>
+          <td>
+            <div class="scanbox">
+              <input class="blank" style="min-width:120px" placeholder="款号（扫码或手动）">
+              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="styleWorst"></label>
+            </div>
+            <div class="scantip" style="margin-top:4px"></div>
+            <div class="uprow" style="margin-top:4px">
+              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="styleWorst"></label>
+              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+            </div>
+          </td>
+          <td><textarea class="blank" placeholder="为什么卖得动 / 卖不动？"></textarea></td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="ybox">
+      <div class="h">追问：卖不动的，你觉得是——</div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox">款式不对路（客人不穿这种）</label>
+        <label class="opt"><input type="checkbox">价格不对（太贵 / 太便宜）</label>
+        <label class="opt"><input type="checkbox">陈列位置不好</label>
+        <label class="opt"><input type="checkbox">尺码不全</label>
+        <span class="fillline" style="display:inline-flex;align-items:center;gap:6px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder="写一下"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5.3 -->
+  <div class="card q" data-q="5.3 特色专区">
+    <div class="qtitle"><span class="qno">5.3</span><span>特色专区</span><span class="dur">引导式追问，不给选项</span></div>
+    <div class="script"><span class="mark">💬</span> “咱们顺着聊——这家店，你觉得应该建 / 强化什么专区？”</div>
+    <div class="ybox">
+      <div class="h">追问 1：你看你熟客里，有没有什么<b>群体是被忽略的</b>？</div>
+      <div class="grayeg">比如：很少来但确实有的某群体（40-60 岁大码女装、175+ 男商务、8-15 岁童装、年轻辣妹等）</div>
+      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder="写一下"></div>
+    </div>
+    <div class="ybox">
+      <div class="h">追问 2：如果只能建<b>一个</b>专区，你会选什么？为什么？</div>
+      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder="写一下"></div>
+    </div>
+    <div class="ybox">
+      <div class="h">追问 3：这个专区大概要多大？放什么品类？</div>
+      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder="写一下"></div>
+    </div>
+    <div class="ybox">
+      <div class="h">追问 4：假设增加某个专区，你们认为需要<b>多加几个款</b>？</div>
+      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder="如：需多备 30~50 款 / 不用加款、只调陈列"></div>
+    </div>
+    <div class="ybox">
+      <div class="h">追问 5：还有吗？第二个？第三个？</div>
+      <div class="row"><span class="fl">第二：</span><input class="blank" style="width:68%" placeholder="写一下"></div>
+      <div class="row"><span class="fl">第三：</span><input class="blank" style="width:68%" placeholder="写一下"></div>
+    </div>
+    <div class="ybox">
+      <div class="h">追问 6：如果上面这些都不缺，这家店是不是应该<b>维持现状</b>？为什么？</div>
+      <div class="row"><label class="chip"><input type="checkbox">维持现状</label> —— 原因：<input class="blank" style="width:50%" placeholder="写一下"></div>
+      <div class="row"><label class="chip"><input type="checkbox">还是要建</label> —— 建什么：<input class="blank" style="width:50%" placeholder="写一下"></div>
+    </div>
+  </div>
+
+  <!-- 5.4 陈列情况 -->
+  <div class="card q" data-q="5.4 陈列情况">
+    <div class="qtitle"><span class="qno">5.4</span><span>陈列情况</span></div>
+    <div class="script"><span class="mark">💬</span> “店里货架怎么摆的？是严格按公司指引，还是你们自己会调？”</div>
+    <div class="opts" data-group="陈列">
+      <label class="opt"><input type="checkbox">完全按公司指引</label>
+      <label class="opt"><input type="checkbox">店员 / 店长有自己发挥、搭配</label>
+      <label class="opt"><input type="checkbox">会根据顾客建议调整</label>
+    </div>
+    <div class="fillline" style="margin-top:6px"><span class="fl">备注：</span><input class="blank full" placeholder="如：哪类货自己常调陈列、效果如何…"></div>
+  </div>
+</section>
+
+<!-- ============ 六、本地有什么“不一样” ============ -->
+<section class="sec" data-sec="本地特色">
+  <div class="sectop"><h2>第六段 · 本地有什么“不一样”</h2><span class="tm">约 8 分钟</span></div>
+  <div class="card">
+    <div class="script"><span class="mark">💬</span> “本地有什么<b>特别的</b>——别的店没有的？咱们顺着聊——”</div>
+    <div class="ybox">
+      <div class="h">追问 1：附近学校情况</div>
+      <div class="row">周边小学 __ 所、初中 __ 所、高中 __ 所；离门店多远（到达时间 / 距离）：<input class="blank" style="width:50%" placeholder="如：小学步行 5 分钟 / 高中 1.5 公里"></div>
+      <div class="row">学生来得多吗？他们的需求接得住吗？<input class="blank full" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 2：门店周边有没有新开什么门店抢走客流？</div>
+      <div class="row"><input class="blank full" placeholder="如：对面新开 XX 折扣店、旁边商场开业…"></div>
+      <div class="h" style="margin-top:6px">追问 3：店员自己一般在什么店买衣服多？</div>
+      <div class="row"><input class="blank full" placeholder="如：批发市场、电商、竞品品牌店…"></div>
+      <div class="h" style="margin-top:6px">追问 4：有工厂 / 工地吗？工服 / 体力劳动者有需求吗？</div>
+      <div class="row">有 / 无；需求：<input class="blank full" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 5：附近是景区 / 文旅集中地吗？游客来买什么？</div>
+      <div class="row"><input class="blank full" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px"><mark>追问 6：本地节庆 / 民俗是什么？带来什么特殊需求？</mark></div>
+      <div class="row"><input class="blank full" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 7：大码身型多吗？</div>
+      <div class="row"><input class="blank full" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px"><mark>追问 8：季节有什么特殊的？（降温早 / 晚、回南天、雾大……）</mark></div>
+      <div class="row"><input class="blank full" placeholder="写一下"></div>
+      <div class="h" style="margin-top:6px">追问 9：还有什么别的——你们这边独有的？</div>
+      <div class="row"><input class="blank full" placeholder="写一下"></div>
+    </div>
+
+    <div class="qtitle" style="margin-top:10px"><span class="qno">6.1</span><span>本地差异清单（勾选并填写）</span></div>
+    <div class="tblwrap"><table class="frm">
+      <thead><tr><th>类别</th><th>具体表现</th><th>涉及品类</th><th>涉及尺码 / 颜色</th><th>时间窗</th></tr></thead>
+      <tbody>
+        <tr><td><label class="chip"><input type="checkbox">学校</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank" placeholder="如 9 月开学季"></td></tr>
+        <tr><td><label class="chip"><input type="checkbox">工厂</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
+        <tr><td><label class="chip"><input type="checkbox">旅游</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
+        <tr><td><label class="chip"><input type="checkbox">节庆</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
+        <tr><td><label class="chip"><input type="checkbox">大码</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
+        <tr><td><label class="chip"><input type="checkbox">季节</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
+        <tr><td><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:64%"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
+      </tbody>
+    </table></div>
+    <div class="bbx">💡 <b>例：</b>湖南青少年白T黑裤<br>
+      <span class="grayeg">- 类别：学校　具体：本地学校不发校服，白T黑裤都行<br>
+      - 涉及品类：白T + 黑裤　尺码：白T 110~160，黑裤 S~2XL　时间窗：9 月开学季</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 七、收口 + 拍照 ============ -->
+<section class="sec" data-sec="第七段·收口拍照">
+  <div class="sectop"><h2>第七段 · 收口 + 拍照</h2><span class="tm">约 5 分钟</span></div>
+
+  <!-- 7.1 -->
+  <div class="card q" data-q="7.1 收口 + 拍照">
+    <div class="qtitle"><span class="qno">7.1</span><span>收口 + 拍照</span></div>
+    <div class="script"><span class="mark">💬</span> “聊得差不多了，谢谢 X 姐 / X 哥！最后我想拍几张照——”</div>
+    <div class="photos">
+      <div class="uprow">
+        <label class="upbtn">① 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="1"></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
+      <div class="uprow">
+        <label class="upbtn">② 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="2"></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
+      <div class="uprow">
+        <label class="upbtn">③ 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="3"></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
+      <div class="uprow">
+        <label class="upbtn">④ 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="4"></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
+    </div>
+    <div class="script" style="margin-top:8px"><span class="mark">💬</span> “之后我把今天的整理成信息回给商品组，缺货款会进追单清单。”</div>
+  </div>
+</section>
+
+</main>
+<div class="stickact">
+  <button type="button" id="btnTop">回到顶部</button>
+  <button type="button" id="btnDraftFloat">暂时保存</button>
+  <button type="button" id="btnSubmitFloat">提交</button>
+  <button type="button" id="btnExportFloat">导出反馈</button>
+</div>
+
+<div class="modalmask" id="exportModal">
+  <div class="modal">
+    <h3>导出反馈文本（可复制 / 下载后反馈商品部）</h3>
+    <div class="mbody">
+      <div class="opts" style="margin-bottom:8px">
+        <label class="opt"><input type="checkbox" id="incEmpty">包含未作答题目（导出完整清单）</label>
+        <label class="opt"><input type="checkbox" id="incSpeech">包含话术原文（便于商品部理解语境）</label>
+      </div>
+      <textarea id="exportOut" readonly></textarea>
+    </div>
+    <div class="mfoot">
+      <button class="mbtn" id="btnCopy">复制</button>
+      <button class="mbtn" id="btnDown">下载 .txt</button>
+      <button class="mbtn primary" id="btnModalClose">关闭</button>
+    </div>
+  </div>
+</div>
+<div class="modalmask" id="recModal">
+  <div class="modal">
+    <h3>提交记录（保存在本机浏览器）</h3>
+    <div class="mbody">
+      <div id="recList"></div>
+      <div id="recDetail" style="display:none">
+        <div style="margin:4px 0 8px"><button class="mbtn mini" id="btnRecBack">返回列表</button></div>
+        <textarea id="recText" readonly></textarea>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="mbtn" id="btnRecExportAll">导出全部</button>
+      <button class="mbtn primary" id="btnRecClose">关闭</button>
+    </div>
+  </div>
+</div>
+<footer>7号衣库 · 门店商品差异化对话话术 v4.4（督导网页记录版）｜数据仅保存在本机浏览器，可“暂时保存 / 提交 / 导出反馈 / 打印”归档<br>建议在 Chrome / Edge 中打开；手机、平板亦可使用</footer>
+
+<script>
+"use strict";
+/* ============ 工具 ============ */
+const STORE_KEY_PREFIX = "qiyi_survey_v4_";
+let curKey = null, saveTimer = null;
+const $ = s => document.querySelector(s);
+const val = id => { const el = $("#"+id); return el ? (el.value||"").trim() : ""; };
+const slug = s => (s||"未命名门店").replace(/[\\/:*?"<>| ]/g,"_");
+const clean = t => (t||"").replace(/[☐□]\s*/g,"").replace(/\s+/g," ").trim();
+function currentKey(){
+  const k = slug(val("f_store")) + "_" + (val("f_date")||"未定日期");
+  return STORE_KEY_PREFIX + k;
+}
+
+/* ============ 状态存取：按文档顺序收集 checkbox 与文本 ============ */
+function collectCk(){ return [...document.querySelectorAll("main .q input[type=checkbox]")]; }
+function collectTx(){ return [...document.querySelectorAll("main .q .blank")]; }
+function serialize(){
+  return { ck: collectCk().map(c=>c.checked), tx: collectTx().map(t=>t.value) };
+}
+function deserialize(data){
+  if(!data) return;
+  const ck = collectCk(), tx = collectTx();
+  (data.ck||[]).forEach((v,i)=>{ if(ck[i]) ck[i].checked = !!v; });
+  (data.tx||[]).forEach((v,i)=>{ if(tx[i]) tx[i].value = v||""; });
+}
+
+function save(){
+  const key = curKey || (curKey = currentKey());
+  try{
+    localStorage.setItem(key, JSON.stringify({
+      meta:{store:val("f_store"), date:val("f_date"), dudao:val("f_dudao"), partner:val("f_partner")},
+      body: serialize(), updated: Date.now()
+    }));
+    $("#saveState").textContent = "✓ 已保存 " + new Date().toTimeString().slice(0,5);
+  }catch(e){ $("#saveState").textContent = "保存失败"; }
+}
+function loadByKey(key){
+  try{
+    const raw = localStorage.getItem(key);
+    if(!raw) return false;
+    const data = JSON.parse(raw);
+    $("#f_store").value = data.meta.store||"";
+    $("#f_date").value = data.meta.date||""; $("#f_dudao").value = data.meta.dudao||"";
+    $("#f_partner").value = data.meta.partner||"";
+    deserialize(data.body);
+    curKey = key;
+    $("#saveState").textContent = "已载入记录";
+    return true;
+  }catch(e){ return false; }
+}
+function scheduleSave(){ clearTimeout(saveTimer); saveTimer = setTimeout(save, 350); }
+
+/* ============ 进度 ============ */
+function qAnswered(qel){
+  if(qel.querySelector("input[type=checkbox]:checked")) return true;
+  if([...qel.querySelectorAll(".blank")].find(b=>b.value && b.value.trim())) return true;
+  if([...qel.querySelectorAll(".upfile")].find(f=>f.files && f.files.length)) return true;
+  return false;
+}
+function updateProgress(){
+  const all = [...document.querySelectorAll("main .q")];
+  const done = all.filter(qAnswered).length;
+  $("#progBar").style.width = (all.length ? (done/all.length*100) : 0) + "%";
+  $("#progTxt").textContent = "已完成 " + done + " / " + all.length + " 组";
+}
+
+/* ============ 界面 ============ */
+function buildNav(){
+  const nav = $("#nav"); nav.innerHTML="";
+  document.querySelectorAll("section.sec").forEach((sec,i)=>{
+    sec.id = "sec" + i;
+    const a = document.createElement("a");
+    a.textContent = sec.querySelector("h2").textContent;
+    a.href = "#sec" + i;
+    nav.appendChild(a);
+  });
+}
+function toggleSpeech(hide){
+  document.querySelectorAll(".script, .hint").forEach(el=>{ el.style.display = hide ? "none" : ""; });
+  $("#btnSpeech").textContent = hide ? "展开话术" : "收起话术";
+  sessionStorage.setItem("qy_hideSpeech", hide ? "1" : "0");
+}
+function syncChipUI(){
+  document.querySelectorAll("label.opt,label.chip").forEach(lab=>{
+    const c = lab.querySelector("input[type=checkbox]");
+    lab.classList.toggle("ck", !!(c && c.checked));
+  });
+}
+
+/* ============ 4.3 缺货 TOP3 表格三行（动态生成） ============ */
+function missRow(rk){
+  const tr = document.createElement("tr");
+  tr.innerHTML =
+    '<td class="rk">'+rk+'</td>' +
+    '<td><input class="blank" style="min-width:150px" placeholder="品类+款型+色"></td>' +
+    '<td><div class="cellopts">' +
+      '<label class="chip"><input type="checkbox">未备货</label>' +
+      '<label class="chip"><input type="checkbox">断码</label>' +
+      '<label class="chip"><input type="checkbox">断色</label>' +
+      '<label class="chip"><input type="checkbox">季节未到</label>' +
+      '<span class="fillline" style="display:inline-flex;align-items:center;gap:4px"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:90px" placeholder="写"></span>' +
+    '</div></td>' +
+    '<td><div class="cellopts">' +
+      '<label class="chip"><input type="checkbox">经常</label>' +
+      '<label class="chip"><input type="checkbox">偶尔</label>' +
+      '<label class="chip"><input type="checkbox">一次</label>' +
+    '</div></td>' +
+    '<td><div class="cellopts">' +
+      '<span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap">' +
+        '<label class="chip"><input type="checkbox">能，约</label>' +
+        '<input class="blank" style="width:50px" placeholder="件数"><span style="font-size:12px">件</span>' +
+      '</span>' +
+      '<div style="margin-top:2px"><label class="chip"><input type="checkbox">不好说</label></div>' +
+    '</div></td>';
+  return tr;
+}
+function buildMissRows(){
+  const tbody = $("#tblMissBody");
+  ["①","②","③"].forEach(rk=>tbody.appendChild(missRow(rk)));
+}
+
+/* ============ 导出反馈 ============ */
+function optText(cb){
+  // 单选 label 文本；若后面紧跟 .blank 填了内容则拼上
+  const lab = cb.closest("label");
+  if(!lab) return "";
+  let t = clean(lab.textContent);
+  let after = lab.nextElementSibling;
+  // label 内部的末尾 blank（如 其他：____ 拆开后的情况在此不出现，仅用于防御）
+  if(after && after.classList.contains("blank") && after.value.trim()) t += "：" + after.value.trim();
+  return t;
+}
+function cellValues(td, head){
+  const res = [];
+  // 已勾选 chip/opt
+  td.querySelectorAll("input[type=checkbox]:checked").forEach(cb=>{
+    const lab = cb.closest("label");
+    if(!lab) return;
+    let t = clean(lab.textContent);
+    const after = lab.nextElementSibling;
+    if(after && after.classList.contains("blank") && after.value.trim()) t += "：" + after.value.trim();
+    if(t) res.push(t);
+  });
+  // 未勾选但填写的 .blank
+  td.querySelectorAll(".blank").forEach(b=>{
+    if(!b.value || !b.value.trim()) return;
+    if(b.previousElementSibling && b.previousElementSibling.classList.contains("chip")) return; // 已随勾选输出
+    if(b.closest("label.opt")) return; // 防御：opt 内嵌
+    res.push(b.value.trim());
+  });
+  return res;
+}
+function exportQuestion(qel){
+  const out = [];
+  const titleEl = qel.querySelector(".qtitle");
+  const title = titleEl ? clean(titleEl.textContent) : "";
+  // 1) 题干外的独立勾选（不属于表格）
+  qel.querySelectorAll("input[type=checkbox]").forEach(cb=>{
+    if(!cb.checked || cb.closest("table.frm")) return;
+    const t = optText(cb);
+    if(t) out.push("　☑ " + t);
+  });
+  // 2) 独立填写项（非表格内、非勾选项内）
+  qel.querySelectorAll(".blank").forEach(b=>{
+    if(!b.value || !b.value.trim()) return;
+    if(b.closest("table.frm") || b.closest("label.opt")) return;
+    const pre = textBefore(b);
+    out.push("　" + (pre ? pre + "：" : "填写：") + b.value.trim());
+  });
+  // 3) 表格行
+  qel.querySelectorAll("table.frm tbody tr").forEach(tr=>{
+    const heads = [...(tr.closest("table").querySelectorAll("thead th"))].map(th=>clean(th.textContent));
+    const cells = [...tr.cells];
+    const firstLabel = cells.length ? clean(cells[0].textContent) : "";
+    const parts = [];
+    for(let i=0;i<cells.length;i++){
+      if(i===0) continue;
+      const vs = cellValues(cells[i], heads[i]);
+      if(vs.length) parts.push((heads[i] ? heads[i]+"：" : "") + vs.join("、"));
+    }
+    // 首列表头为“维度/类别”时也可能有勾选/填写（如 本地差异清单勾选学校）
+    if(cells.length && !parts.length){
+      const c0v = cellValues(cells[0], heads[0]);
+      if(c0v.length) parts.push((heads[0] ? heads[0]+"：" : "") + c0v.join("、"));
+    }
+    if(parts.length) out.push("　[ " + firstLabel + " ] " + parts.join("　"));
+  });
+  return { title, lines: out };
+}
+function textBefore(b){
+  const p = b.parentElement; if(!p) return "";
+  let buf = "";
+  for(const node of p.childNodes){
+    if(node === b) break;
+    if(node.nodeType === 3){ buf += node.textContent; }
+    else if(node.nodeType === 1){
+      const cls = node.classList || [];
+      if(cls.contains("fl") || cls.contains("h")) buf += node.textContent;
+      else if(!cls.contains("chip") && !cls.contains("opt") && node.tagName !== "INPUT" && node.tagName !== "LABEL") buf += node.textContent;
+    }
+  }
+  buf = buf.replace(/[☐□]\s*/g," ").replace(/[：:\s]+$/,"").replace(/\s+/g," ").trim();
+  return buf;
+}
+function buildExport(){
+  const incEmpty = $("#incEmpty").checked;
+  const incSpeech = $("#incSpeech").checked;
+  const L = [];
+  L.push("7号衣库 · 门店商品差异化对话反馈");
+  L.push("门店：" + (val("f_store")||"未填写") + "　｜　访谈日期：" + (val("f_date")||"—"));
+  L.push("督导：" + (val("f_dudao")||"—") + "　｜　受访店长/店员：" + (val("f_partner")||"—"));
+  L.push("━".repeat(40));
+
+  document.querySelectorAll("section.sec").forEach(sec=>{
+    const secName = sec.querySelector("h2").textContent;
+    const blocks = [];
+    // 段落级引导话术（非问题卡内）仅在需要时输出
+    if(incSpeech){
+      sec.querySelectorAll(":scope > .card > .script, :scope > .card > .hint, :scope > .card > .des").forEach(el=>{
+        const t = clean(el.textContent);
+        if(t) blocks.push("　· " + t);
+      });
+    }
+    sec.querySelectorAll(":scope > .card.q").forEach(q=>{
+      const r = exportQuestion(q);
+      if(r.lines.length){ blocks.push("【" + r.title + "】"); blocks.push(...r.lines); }
+      else if(incEmpty){ blocks.push("【" + r.title + "】（未作答）"); }
+    });
+    // 兼容嵌套在其他卡内的 .q（如开场寒暄无 .q，不输出）
+    if(blocks.length){ L.push("■ " + secName); L.push(...blocks); }
+  });
+  return L.join("\n");
+}
+
+/* ============ 弹窗 ============ */
+function openExport(){ $("#exportOut").value = buildExport(); $("#exportModal").classList.add("show"); }
+function closeExport(){ $("#exportModal").classList.remove("show"); }
+function copyOut(){
+  const ta = $("#exportOut"); ta.select();
+  try{ document.execCommand("copy"); alert("已复制到剪贴板，可直接粘贴反馈给商品部。"); }
+  catch(e){ alert("复制失败：请手动全选后 Ctrl+C"); }
+}
+function downOut(){
+  const blob = new Blob([$("#exportOut").value], {type:"text/plain;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "门店差异化反馈_" + (val("f_store")||"未命名门店") + ".txt";
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 600);
+}
+
+/* ============ 扫码 / 拍照上传 ============ */
+function previewFile(file, img){
+  if(!file || !img) return;
+  img.src = URL.createObjectURL(file);
+  img.style.display = "block";
+}
+async function tryScan(file, tipEl, inputEl){
+  if(!("BarcodeDetector" in window)){
+    if(tipEl) tipEl.textContent = "当前浏览器不支持自动识别，请手动输入款号";
+    return;
+  }
+  try{
+    const bmp = await createImageBitmap(file);
+    const det = new BarcodeDetector({formats:["code_128","ean_13","ean_8","code_39","upc_a","upc_e","qr_code"]});
+    const codes = await det.detect(bmp);
+    if(codes.length){
+      if(inputEl) inputEl.value = codes[0].rawValue;
+      if(tipEl) tipEl.textContent = "已识别款号：" + codes[0].rawValue;
+    }else{
+      if(tipEl) tipEl.textContent = "未识别条码，请手动输入款号";
+    }
+  }catch(e){ if(tipEl) tipEl.textContent = "识别失败，请手动输入款号"; }
+}
+function handleUpfile(el){
+  const file = el.files[0]; if(!file) return;
+  const container = el.closest(".uprow") || el.closest("td");
+  const img = container ? container.querySelector(".thumb") : null;
+  previewFile(file, img);
+  if(el.dataset.scan){
+    const box = el.closest(".scanbox");
+    const tip = box ? box.nextElementSibling : null;
+    const input = box ? box.querySelector(".blank") : null;
+    tryScan(file, tip, input);
+  }
+}
+
+/* ============ 提交 / 提交记录 ============ */
+const SUBMIT_KEY = "qiyi_survey_v4_submitted";
+function getSubs(){ try{ return JSON.parse(localStorage.getItem(SUBMIT_KEY)) || []; }catch(e){ return []; } }
+function setSubs(a){ try{ localStorage.setItem(SUBMIT_KEY, JSON.stringify(a)); }catch(e){ alert("保存失败：本机存储空间不足"); } }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function fmtTime(ts){
+  const d = new Date(ts), p = n => String(n).padStart(2,"0");
+  return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+" "+p(d.getHours())+":"+p(d.getMinutes());
+}
+function copyText(t){
+  const ta = document.createElement("textarea");
+  ta.value = t; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); alert("已复制到剪贴板。"); }
+  catch(e){ alert("复制失败，请手动全选复制。"); }
+  ta.remove();
+}
+function downText(t, name){
+  const blob = new Blob([t], {type:"text/plain;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name || "反馈.txt";
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 600);
+}
+function updateRecCount(){ const el = $("#recCount"); if(el) el.textContent = String(getSubs().length); }
+function submitRecord(){
+  const store = val("f_store");
+  if(!store){ alert("请先填写门店名称，再提交。"); $("#f_store").focus(); return; }
+  save();
+  const rec = {
+    id: String(Date.now()), store: store, date: val("f_date"),
+    dudao: val("f_dudao"), partner: val("f_partner"),
+    ts: Date.now(), text: buildExport()
+  };
+  const list = getSubs();
+  const idx = list.findIndex(r => r.store === rec.store && r.date === rec.date);
+  if(idx >= 0){ list[idx] = rec; setSubs(list); }
+  else { list.push(rec); setSubs(list); }
+  updateRecCount();
+  alert(idx >= 0
+    ? "已更新「" + rec.store + "」该日期的提交记录。"
+    : "已提交！「" + rec.store + "」的记录已保存在本机（共 " + list.length + " 条）。");
+}
+function renderRecList(){
+  const box = $("#recList");
+  const list = getSubs().slice().sort((a,b)=>b.ts-a.ts);
+  if(!list.length){
+    box.innerHTML = '<div class="recempty">暂无提交记录。填完门店名称后点“提交”，即可保存一份反馈快照。</div>';
+    return;
+  }
+  box.innerHTML = "";
+  list.forEach(r=>{
+    const item = document.createElement("div");
+    item.className = "recitem";
+    item.innerHTML =
+      '<div class="recinfo">' +
+        '<div class="rectitle">' + esc(r.store) + '<span class="recdate">' + esc(r.date||"—") + '</span></div>' +
+        '<div class="recmeta">督导：' + esc(r.dudao||"—") + '　受访：' + esc(r.partner||"—") + '　提交于 ' + fmtTime(r.ts) + '</div>' +
+      '</div>';
+    const ops = document.createElement("div");
+    ops.className = "recops";
+    ops.innerHTML =
+      '<button class="mbtn mini" data-act="view">查看</button>' +
+      '<button class="mbtn mini" data-act="copy">复制</button>' +
+      '<button class="mbtn mini" data-act="down">下载</button>' +
+      '<button class="mbtn mini danger" data-act="del">删除</button>';
+    ops.querySelectorAll("button").forEach(b=>{
+      b.addEventListener("click", ()=>{
+        const act = b.dataset.act;
+        if(act === "view") viewRec(r.id);
+        else if(act === "copy") copyText(r.text);
+        else if(act === "down") downText(r.text, "门店差异化反馈_" + r.store + ".txt");
+        else if(act === "del") delRec(r.id);
+      });
+    });
+    item.appendChild(ops);
+    box.appendChild(item);
+  });
+}
+function viewRec(id){
+  const r = getSubs().find(x=>x.id === id); if(!r) return;
+  $("#recText").value = r.text;
+  $("#recList").style.display = "none";
+  $("#recDetail").style.display = "";
+}
+function recBack(){ $("#recDetail").style.display = "none"; $("#recList").style.display = ""; }
+function delRec(id){
+  if(!confirm("确定删除这条提交记录？")) return;
+  setSubs(getSubs().filter(x=>x.id !== id));
+  renderRecList(); updateRecCount();
+}
+function openRec(){ renderRecList(); recBack(); $("#recModal").classList.add("show"); }
+function closeRec(){ $("#recModal").classList.remove("show"); }
+function exportAllRecs(){
+  const list = getSubs();
+  if(!list.length){ alert("暂无提交记录。"); return; }
+  downText(list.map(r=>r.text).join("\n\n" + "=".repeat(40) + "\n\n"), "门店差异化反馈_全部提交记录.txt");
+}
+
+/* ============ 暂时保存 ============ */
+function allDraftKeys(){
+  const keys = [];
+  try{
+    for(let i=0;i<localStorage.length;i++){
+      const k = localStorage.key(i);
+      if(k && k.indexOf(STORE_KEY_PREFIX) === 0 && k !== SUBMIT_KEY) keys.push(k);
+    }
+  }catch(e){}
+  return keys;
+}
+function draftList(){
+  return allDraftKeys().map(k=>{
+    try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; }
+  }).filter(d=>d && d.meta);
+}
+function refreshStoreList(){
+  const dl = $("#storeList"); if(!dl) return;
+  const names = [...new Set(draftList().map(d=>d.meta.store).filter(Boolean))].sort();
+  dl.innerHTML = "";
+  names.forEach(n=>{
+    const o = document.createElement("option");
+    o.value = n;
+    dl.appendChild(o);
+  });
+}
+function updateDraftCount(){
+  const el = $("#draftCount"); if(!el) return;
+  el.textContent = String(draftList().length);
+}
+function saveDraft(){
+  const store = val("f_store");
+  if(!store){ alert("请先填写门店名称，再暂时保存。"); $("#f_store").focus(); return; }
+  save();
+  refreshStoreList(); updateDraftCount();
+  const t = new Date().toTimeString().slice(0,5);
+  const nl = String.fromCharCode(10);
+  alert("已暂时保存！" + nl + nl + "门店：" + store + nl + "保存时间：" + t + nl + nl +
+    "下次打开本页，在「门店名称」里选/填同样的名字并选同样的日期，即可自动载入这次暂存的内容。（当前共暂存 " + draftList().length + " 家门店）");
+}
+
+/* ============ 条件显示（1.5/1.6 等） ============ */
+function bindConditional(){
+  const groups = new Map();
+  document.querySelectorAll('[data-cond][data-target]').forEach(lab=>{
+    const key = lab.dataset.cond;
+    if(!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(lab);
+    const cb = lab.querySelector('input[type=checkbox]');
+    if(cb) cb.addEventListener('change', ()=> updateConditionalGroup(key));
+  });
+  groups.forEach((_,key)=> updateConditionalGroup(key));
+}
+function updateConditionalGroup(key){
+  const labs = [...document.querySelectorAll(`[data-cond="${key}"][data-target]`)];
+  const selected = labs.filter(l => l.querySelector('input[type=checkbox]')?.checked).map(l => l.dataset.target);
+  const targets = new Set(labs.map(l => l.dataset.target));
+  targets.forEach(id=>{
+    const box = document.getElementById(id);
+    if(box) box.style.display = selected.includes(id) ? '' : 'none';
+  });
+}
+
+/* ============ 初始化 ============ */
+function init(){
+  if(!val("f_date")) $("#f_date").value = new Date().toISOString().slice(0,10);
+  buildMissRows();
+  buildNav();
+  bindConditional();
+  const today = new Date().toISOString().slice(0,10);
+  $("#f_date").value = val("f_date") || today;
+
+  // 载入当前默认记录（门店为空时按“未命名门店”）
+  if(!loadByKey(currentKey())) { curKey = currentKey(); save(); }
+
+  ["f_store","f_date","f_dudao","f_partner"].forEach(id=>{
+    const el = $("#"+id);
+    el.addEventListener("change", ()=>{
+      if(id === "f_store" || id === "f_date"){
+        const nk = currentKey();
+        if(!loadByKey(nk)){ curKey = nk; save(); }
+        else $("#saveState").textContent = "已载入该门店记录";
+      } else { save(); }
+    });
+  });
+
+  document.addEventListener("input", e=>{
+    if(e.target.closest("main .q") || ["f_store","f_date","f_dudao","f_partner"].includes(e.target.id)){
+      syncChipUI(); scheduleSave(); updateProgress();
+    }
+  });
+  document.addEventListener("change", e=>{
+    if(e.target.classList.contains("upfile")){ handleUpfile(e.target); scheduleSave(); updateProgress(); }
+    else if(e.target.closest("main .q")){ syncChipUI(); scheduleSave(); updateProgress(); }
+  });
+
+  $("#btnSpeech").addEventListener("click", ()=>{
+    const h = sessionStorage.getItem("qy_hideSpeech") === "1";
+    toggleSpeech(!h);
+  });
+  $("#btnExport").addEventListener("click", openExport);
+  $("#btnExportFloat").addEventListener("click", openExport);
+  $("#btnSubmit").addEventListener("click", submitRecord);
+  $("#btnSubmitFloat").addEventListener("click", submitRecord);
+  $("#btnRecs").addEventListener("click", openRec);
+  $("#btnRecClose").addEventListener("click", closeRec);
+  $("#recModal").addEventListener("click", e=>{ if(e.target.id === "recModal") closeRec(); });
+  $("#btnRecBack").addEventListener("click", recBack);
+  $("#btnRecExportAll").addEventListener("click", exportAllRecs);
+  updateRecCount();
+  $("#btnDraft").addEventListener("click", saveDraft);
+  $("#btnDraftFloat").addEventListener("click", saveDraft);
+  refreshStoreList(); updateDraftCount();
+  $("#btnPrint").addEventListener("click", ()=>window.print());
+  $("#btnClear").addEventListener("click", ()=>{
+    if(!confirm("确定清空当前门店的填写内容并删除本地记录？")) return;
+    collectCk().forEach(c=>c.checked=false);
+    collectTx().forEach(t=>t.value="");
+    const k = curKey || currentKey();
+    localStorage.removeItem(k);
+    curKey = currentKey(); save(); updateProgress(); refreshStoreList(); updateDraftCount();
+  });
+  $("#btnTop").addEventListener("click", ()=>window.scrollTo({top:0,behavior:"smooth"}));
+  $("#btnModalClose").addEventListener("click", closeExport);
+  $("#exportModal").addEventListener("click", e=>{ if(e.target.id === "exportModal") closeExport(); });
+  $("#btnCopy").addEventListener("click", copyOut);
+  $("#btnDown").addEventListener("click", downOut);
+  $("#incEmpty").addEventListener("change", ()=> $("#exportOut").value = buildExport());
+  $("#incSpeech").addEventListener("change", ()=> $("#exportOut").value = buildExport());
+
+  const hidden = sessionStorage.getItem("qy_hideSpeech") === "1";
+  toggleSpeech(hidden);
+  syncChipUI();
+  updateProgress();
+}
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
+
+
+
