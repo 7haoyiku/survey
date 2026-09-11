@@ -211,160 +211,53 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
   <!-- 3.1 -->
   <div class="card q" data-q="1.1 性别占比（整体观察）">
     <div class="qtitle"><span class="qno">1.1</span><span>性别占比</span></div>
-    <div class="opts" data-group="性别占比">
-      <label class="opt"><input type="checkbox" name="sex">女多男少</label>
-      <label class="opt"><input type="checkbox" name="sex">男多女少</label>
-      <label class="opt"><input type="checkbox" name="sex">男女差不多</label>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="如:女性约 70%、男性约 30%,请描述大致比例"></textarea>
   </div>
 
   <!-- 1.2 年龄段 -->
   <div class="card q" data-q="1.2 客群年龄段（区分男女）">
     <div class="qtitle"><span class="qno">1.2</span><span>客群年龄段（区分男女）</span></div>
-    <div class="tblwrap"><table class="frm">
-      <thead><tr><th>年龄段</th><th>☐ 儿童</th><th>☐ 学生</th><th>☐ 青年</th><th>☐ 中年</th><th>☐ 老年</th></tr></thead>
-      <tbody>
-        <tr><td class="rk">男客</td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td></tr>
-        <tr><td class="rk">女客</td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td>
-          <td><label class="chip"><input type="checkbox">多</label></td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- 1.3 身形 -->
-  <div class="card q" data-q="1.3 身形（分男女）">
-    <div class="qtitle"><span class="qno">1.3</span><span>身形</span></div>
-    <div class="tblwrap"><table class="frm">
-      <thead><tr><th>客群</th><th>☐ 偏瘦</th><th>☐ 标准</th><th>☐ 微胖</th><th>☐ 高大偏壮</th></tr></thead>
-      <tbody>
-        <tr><td class="rk">男客</td>
-          <td><label class="chip"><input type="checkbox">XS / S</label></td>
-          <td><label class="chip"><input type="checkbox">M / L</label></td>
-          <td><label class="chip"><input type="checkbox">XL / 2XL</label></td>
-          <td><label class="chip"><input type="checkbox">3XL 及以上</label></td></tr>
-        <tr><td class="rk">女客</td>
-          <td><label class="chip"><input type="checkbox">XS / S</label></td>
-          <td><label class="chip"><input type="checkbox">M / L</label></td>
-          <td><label class="chip"><input type="checkbox">XL / 2XL</label></td>
-          <td><label class="chip"><input type="checkbox">3XL 及以上</label></td></tr>
-        <tr><td class="rk">童客</td>
-          <td><label class="chip"><input type="checkbox">90 / 100</label></td>
-          <td><label class="chip"><input type="checkbox">110 / 120</label></td>
-          <td><label class="chip"><input type="checkbox">130 / 140</label></td>
-          <td><label class="chip"><input type="checkbox">150 / 160</label></td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- 3.4 -->
-  <div class="card q" data-q="1.4 进店主流穿着风格">
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="请描述主力顾客年龄段,如女 25-35、男 30-45"></textarea>
+  </div><div class="card q" data-q="1.3 身形（分男女）">
+    <div class="qtitle"><span class="qno">1.3</span><span>身形（分男女）</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="请描述主力顾客身材特征,如偏胖 / 偏瘦 / 中等"></textarea>
+  </div><div class="card q" data-q="1.4 进店主流穿着风格">
     <div class="qtitle"><span class="qno">1.4</span><span>进店主流穿着风格</span></div>
     <div class="qtitle"><span style="color:#444">女：</span></div>
-    <div class="opts" data-group="女装风格">
-      <label class="opt"><input type="checkbox">潮流辣妹女（短上衣 / 工装裤 / 厚底鞋）</label>
-      <label class="opt"><input type="checkbox">通勤简约女（衬衫 / 西装裤 / 小皮鞋）</label>
-      <label class="opt"><input type="checkbox">休闲舒适女（T / 卫裤 / 运动鞋）</label>
-      <label class="opt"><input type="checkbox">气质温柔女（针织 / 连衣裙）</label>
-      <label class="opt"><input type="checkbox">带娃家长（推车 / 妈咪包 / 孩子同行）</label>
-      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px;margin-left:2px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder=""></span>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="女顾客进店常穿的款式风格"></textarea>
     <div class="qtitle"><span style="color:#444">男：</span></div>
-    <div class="opts" data-group="男装风格">
-      <label class="opt"><input type="checkbox">通勤简约男（衬衫 / 西装裤 / 小皮鞋）</label>
-      <label class="opt"><input type="checkbox">简约日常男（T / 直筒裤 / 运动鞋）</label>
-      <label class="opt"><input type="checkbox">潮男（工装裤 / 板鞋）</label>
-      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px;margin-left:2px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder=""></span>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="男顾客进店常穿的款式风格"></textarea>
   </div>
 
   <!-- 1.5 客群基本盘 -->
   <div class="card q" data-q="1.5 客群基本盘（工作 / 家庭 / 熟客）">
     <div class="qtitle"><span class="qno">1.5</span><span>客群基本盘：做什么工作 / 家庭客 / 熟客</span></div>
-    <div class="fillline"><span class="fl">整体客群看着是做什么工作的：</span><input class="blank full" placeholder=""></div>
-    <div class="fillline" style="margin-top:8px"><span class="fl">家庭客多不多、有没有娃：</span>
-      <label class="chip"><input type="checkbox">家庭客多、普遍带娃</label>
-      <label class="chip"><input type="checkbox">家庭客一般、偶尔带娃</label>
-      <label class="chip"><input type="checkbox">以个人客为主</label>
-      <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:24%" placeholder=""></div>
-    <div class="fillline" style="margin-top:8px;align-items:center;flex-wrap:wrap">
-      <span class="fl">是否有熟客：</span>
-      <label class="chip" data-cond="freq" data-val="有" data-target="freqBox"><input type="checkbox">有</label>
-      <label class="chip"><input type="checkbox">无</label>
-      <span class="condbox" id="freqBox" style="display:none;width:100%;margin-top:6px">
-        <span class="fl">一个月来店几次：</span>
-        <label class="opt"><input type="checkbox">1~2 次</label>
-        <label class="opt"><input type="checkbox">3~4 次</label>
-        <label class="opt"><input type="checkbox">5 次及以上</label>
-      </span>
-    </div>
-  </div>
-
-  <!-- 1.6 -->
-  <div class="card q" data-q="1.6 进店动机">
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="请描述顾客基本盘,如职业、家庭结构、是否有熟客及到店频次"></textarea>
+  </div><div class="card q" data-q="1.6 进店动机">
     <div class="qtitle"><span class="qno">1.6</span><span>进店动机</span></div>
-    <div class="opts" data-group="进店动机">
-      <label class="opt" data-cond="motive" data-val="明确" data-target="motiveMingque"><input type="checkbox">大多有明确目标，直奔某款</label>
-      <label class="opt" data-cond="motive" data-val="逛逛" data-target="motiveGuangguang"><input type="checkbox">大多随便逛，被吸引才停</label>
-    </div>
-    <div class="ybox condbox" id="motiveMingque" style="display:none">
-      <div class="h"><mark>追问：有明确目标的，一般直奔什么品类？</mark></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="顾客进店主要为了什么?如逛街、找特定款、凑单等"></textarea>
+    <div class="ybox condbox" id="motiveMingque" >
+      <div class="h">追问：有明确目标的，一般直奔什么品类？</div>
       <div class="row"><span class="fl">品类：</span><input class="blank" style="width:60%" placeholder=""></div>
-      <div class="row"><mark>这个品类咱们有没有？</mark>
-        <label class="chip"><input type="checkbox">有</label>
-        <label class="chip"><input type="checkbox">没有，一般缺：</label><input class="blank" style="width:40%" placeholder=""></div>
+      <div class="row">这个品类咱们有没有？
+        
+        <input class="blank" style="width:40%" placeholder=""></div>
     </div>
-    <div class="ybox condbox" id="motiveGuangguang" style="display:none">
-      <div class="h"><mark>追问：选“被吸引才停”的，一般被什么吸引？</mark></div>
+    <div class="ybox condbox" id="motiveGuangguang" >
+      <div class="h">追问：选“被吸引才停”的，一般被什么吸引？</div>
       <div class="row">
-        <label class="chip"><input type="checkbox">被广告牌吸引</label>
-        <label class="chip"><input type="checkbox">被陈列吸引</label>
-        <label class="chip"><input type="checkbox">被促销吸引</label>
-        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:24%" placeholder=""></div>
+        
+        
+        
+        <input class="blank" style="width:24%" placeholder=""></div>
     </div>
   </div>
 
   <!-- 3.7 -->
   <div class="card q" data-q="1.7 代购比例（整体）">
-    <div class="qtitle"><span class="qno">1.7</span><span>代购比例</span></div>
-    <div class="opts" data-group="代购比例">
-      <label class="opt"><input type="checkbox">自己买为主</label>
-      <label class="opt"><input type="checkbox">给家人带为主</label>
-      <label class="opt"><input type="checkbox">两者差不多</label>
-    </div>
-    <div class="ybox">
-      <div class="h">追问 1：给家人带的，一般是给谁？（可多选）</div>
-      <div class="row">
-        <label class="chip"><input type="checkbox">老公 / 男友</label>
-        <label class="chip"><input type="checkbox">妈妈 / 婆婆</label>
-        <label class="chip"><input type="checkbox">爸爸 / 公公</label>
-        <label class="chip"><input type="checkbox">孩子</label>
-        <label class="chip"><input type="checkbox">朋友 / 同事</label>
-        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:26%" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 2：给家人买的时候，咱们店凑得齐吗？</div>
-      <div class="row">
-        <label class="chip"><input type="checkbox">凑得齐</label>
-        <label class="chip"><input type="checkbox">凑不齐，一般缺：</label><input class="blank" style="width:40%" placeholder=""></div>
-      <div class="h" style="margin-top:8px">追问 3：女性购买男装的比例大概多少？</div>
-      <div class="row"><span class="fl">女性买男装占比约：</span><input class="blank" style="width:30%" placeholder="">　<label class="chip"><input type="checkbox">几乎没</label><label class="chip"><input type="checkbox">偶尔有</label><label class="chip"><input type="checkbox">挺常见</label></div>
-      <div class="h" style="margin-top:8px">追问 4：买完需要邮寄的比例？哪些时段邮寄客人多？</div>
-      <div class="row"><span class="fl">需要邮寄比例：</span><input class="blank" style="width:30%" placeholder="">
-        <span class="fl" style="margin-left:8px">邮寄高峰时段：</span>
-        <label class="chip"><input type="checkbox">节假日前</label>
-        <label class="chip"><input type="checkbox">周末</label>
-        <label class="chip"><input type="checkbox">平日</label>
-        <label class="chip"><input type="checkbox">大促期间</label></div>
-    </div>
-  </div>
-</section>
+    <div class="qtitle"><span class="qno">1.7</span><span>家人代买 / 代购比例</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="如家人代买约占多少?一般给谁带、凑得齐吗?女性买男装比例多少?需要邮寄的比例和高峰时段?"></textarea>
+  </div></section>
 <!-- ============ 四、第二段：最近一两周的商品规律 ============ -->
 <section class="sec" data-sec="第二段·商品规律">
   <div class="sectop"><h2>第二段 · 最近一两周的商品规律</h2></div>
@@ -372,261 +265,41 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
   <!-- 4.1 -->
   <div class="card q" data-q="2.1 问询 TOP3">
     <div class="qtitle"><span class="qno">2.1</span><span>问询 TOP3</span></div>
-    <div class="tblwrap"><table class="frm" id="tblInq">
-      <thead><tr><th>排名</th><th>品类</th><th>款型</th><th>颜色</th><th>尺码</th><th>价格带</th><th>顾客原话</th></tr></thead>
-      <tbody>
-        <tr><td class="rk">①</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格带" placeholder=""></td><td><input class="blank" data-c="顾客原话"></td></tr>
-        <tr><td class="rk">②</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格带"></td><td><input class="blank" data-c="顾客原话"></td></tr>
-        <tr><td class="rk">③</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格带"></td><td><input class="blank" data-c="顾客原话"></td></tr>
-      </tbody>
-    </table></div>
-    <div class="ybox">
-      <div class="h">追问 1：问完后大多买到了吗？</div>
-      <div class="row"><label class="chip"><input type="checkbox">都买到了</label>
-        <label class="chip"><input type="checkbox">部分没买到</label> —— 哪款？为什么？<input class="blank" style="width:45%" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 2：这一两年，顾客问的款式有变化吗？</div>
-      <div class="row"><label class="chip"><input type="checkbox">有明显变化</label> —— 变成什么了？<input class="blank" style="width:45%" placeholder=""></div>
-      <div class="row"><label class="chip"><input type="checkbox">差不多</label></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="顾客问得最多的 3 类 / 3 款是什么?品类、款型、颜色、尺码、价格带分别是什么?问完后大多买到了吗?近两年问询款式有无变化?"></textarea>
+  </div><div class="card q" data-q="2.2 畅销款 TOP3 / 滞销款 TOP3">
+    <div class="qtitle"><span class="qno">2.2</span><span>畅销款 TOP3 / 滞销款 TOP3</span></div>
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>畅销款 TOP3</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="风格、款式等，畅销原因"></textarea>
+    <div class="photos" data-multi>
+      <div class="uprow">
+        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
     </div>
-  </div>
-
-  <!-- 4.2 -->
-  <div class="card q" data-q="2.2 成交 TOP3">
-    <div class="qtitle"><span class="qno">2.2</span><span>成交 TOP3</span></div>
-    <div class="tblwrap"><table class="frm" id="tblSold">
-      <thead><tr><th>排名</th><th>品类</th><th>款型</th><th>颜色</th><th>尺码</th><th>价格</th><th>件数</th><th>卖得动的原因</th></tr></thead>
-      <tbody>
-        <tr><td class="rk">①</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格"></td><td><input class="blank" data-c="件数" style="width:70px"></td><td><input class="blank" data-c="原因"></td></tr>
-        <tr><td class="rk">②</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格"></td><td><input class="blank" data-c="件数"></td><td><input class="blank" data-c="原因"></td></tr>
-        <tr><td class="rk">③</td><td><input class="blank" data-c="品类"></td><td><input class="blank" data-c="款型"></td><td><input class="blank" data-c="颜色"></td><td><input class="blank" data-c="尺码"></td><td><input class="blank" data-c="价格"></td><td><input class="blank" data-c="件数"></td><td><input class="blank" data-c="原因"></td></tr>
-      </tbody>
-    </table></div>
-    <div class="ybox">
-      <div class="h">追问 1：卖的跟问的对得上吗？有没有“问多卖少”的？</div>
-      <div class="row"><label class="chip"><input type="checkbox">对得上</label>
-        <label class="chip"><input type="checkbox">有</label> —— 哪款问多卖少？为什么？<input class="blank" style="width:45%" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 2：这几款卖得快，是因为——</div>
-      <div class="row">
-        <label class="chip"><input type="checkbox">今年新上的款</label>
-        <label class="chip"><input type="checkbox">去年延续的款</label>
-        <label class="chip"><input type="checkbox">一直都好卖的老款</label>
-        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:26%" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 3：卖得多的原因主要是？（可多选）</div>
-      <div class="row">
-        <label class="chip"><input type="checkbox">颜色</label>
-        <label class="chip"><input type="checkbox">面料</label>
-        <label class="chip"><input type="checkbox">图案</label>
-        <label class="chip"><input type="checkbox">款式</label>
-        <label class="chip"><input type="checkbox">价格</label>
-        <label class="chip"><input type="checkbox">陈列</label>
-        <label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:26%" placeholder=""></div>
+    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>滞销款 TOP3</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="风格、款式等，滞销原因"></textarea>
+    <div class="photos" data-multi>
+      <div class="uprow">
+        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
     </div>
-  </div>
-
-  <!-- 4.3 -->
-  <div class="card q" data-q="2.3 试穿多但没成交的款">
+  </div><div class="card q" data-q="2.3 试穿多但没成交的款">
     <div class="qtitle"><span class="qno">2.3</span><span>试穿多但没成交的款</span></div>
-    <div class="tblwrap"><table class="frm" id="tblTrial">
-      <thead><tr><th>商品款号（扫码 / 手动）</th><th>商品照片</th><th>没买原因（可多选 / 补写）</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:160px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="trial1"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-          </td>
-          <td>
-            <div class="uprow">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="trial1"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td>
-            <label class="chip"><input type="checkbox">太贵</label>
-            <label class="chip"><input type="checkbox">没合适尺码</label>
-            <label class="chip"><input type="checkbox">上身不如挂板</label>
-            <label class="chip"><input type="checkbox">面料不喜欢</label>
-            <label class="chip"><input type="checkbox">颜色不喜欢</label>
-            <label class="chip"><input type="checkbox">家人不认</label>
-            <label class="chip"><input type="checkbox">要再逛逛</label>
-            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder=""></span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:160px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="trial2"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-          </td>
-          <td>
-            <div class="uprow">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="trial2"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td>
-            <label class="chip"><input type="checkbox">太贵</label>
-            <label class="chip"><input type="checkbox">没合适尺码</label>
-            <label class="chip"><input type="checkbox">上身不如挂板</label>
-            <label class="chip"><input type="checkbox">面料不喜欢</label>
-            <label class="chip"><input type="checkbox">颜色不喜欢</label>
-            <label class="chip"><input type="checkbox">家人不认</label>
-            <label class="chip"><input type="checkbox">要再逛逛</label>
-            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder=""></span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:160px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="trial3"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-          </td>
-          <td>
-            <div class="uprow">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="trial3"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td>
-            <label class="chip"><input type="checkbox">太贵</label>
-            <label class="chip"><input type="checkbox">没合适尺码</label>
-            <label class="chip"><input type="checkbox">上身不如挂板</label>
-            <label class="chip"><input type="checkbox">面料不喜欢</label>
-            <label class="chip"><input type="checkbox">颜色不喜欢</label>
-            <label class="chip"><input type="checkbox">家人不认</label>
-            <label class="chip"><input type="checkbox">要再逛逛</label>
-            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder=""></span></td>
-        </tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- 4.4 -->
-  <div class="card q" data-q="2.4 缺货 TOP3">
-    <div class="qtitle"><span class="qno">2.4</span><span>缺货 TOP3</span></div>
-    <div class="tblwrap"><table class="frm" id="tblMiss">
-      <thead><tr><th>排名</th><th>缺的款（品类+款型+色）</th><th>缺什么</th><th>频次</th><th>补齐能卖多少</th></tr></thead>
-      <tbody id="tblMissBody">
-      </tbody>
-    </table></div>
-    <div class="ybox">
-      <div class="h">追问 1：这是“季节性缺”（这个季节缺，过阵子就有）还是“结构性缺”（一直缺）？</div>
-      <div class="row"><label class="chip"><input type="checkbox">季节性缺</label> —— 什么季节？<input class="blank" style="width:35%" placeholder=""></div>
-      <div class="row"><label class="chip"><input type="checkbox">结构性缺</label> —— 大概缺了多久？<input class="blank" style="width:35%" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 2：顾客有没有说过“要是你们能卖 XX 就好了”？</div>
-      <div class="row"><label class="chip"><input type="checkbox">有</label> —— 原话：<input class="blank" style="width:55%" placeholder=""></div>
-      <div class="row"><label class="chip"><input type="checkbox">没有</label></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="款式、没买原因"></textarea>
+    <div class="photos" data-multi>
+      <div class="uprow">
+        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
     </div>
-  </div>
-
-  <!-- 4.5 滞销款 -->
-  <div class="card q" data-q="2.5 滞销款">
-    <div class="qtitle"><span class="qno">2.5</span><span>滞销款（卖不动的 TOP3）</span></div>
-    <div class="tblwrap"><table class="frm" id="tblDead">
-      <thead><tr><th>商品款号（扫码 / 手动）</th><th>商品照片</th><th>针对滞销做了什么措施（可多选）</th><th>措施后依旧卖不动的原因</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:160px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="dead1"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-          </td>
-          <td>
-            <div class="uprow">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="dead1"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td>
-            <label class="opt"><input type="checkbox">挂上店长推荐牌</label>
-            <label class="opt"><input type="checkbox">店员多推荐</label>
-            <label class="opt"><input type="checkbox">调整陈列</label>
-            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder=""></span>
-          </td>
-          <td><textarea class="blank" placeholder=""></textarea></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:160px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="dead2"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-          </td>
-          <td>
-            <div class="uprow">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="dead2"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td>
-            <label class="opt"><input type="checkbox">挂上店长推荐牌</label>
-            <label class="opt"><input type="checkbox">店员多推荐</label>
-            <label class="opt"><input type="checkbox">调整陈列</label>
-            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder=""></span>
-          </td>
-          <td><textarea class="blank" placeholder=""></textarea></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:160px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="dead3"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-          </td>
-          <td>
-            <div class="uprow">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="dead3"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td>
-            <label class="opt"><input type="checkbox">挂上店长推荐牌</label>
-            <label class="opt"><input type="checkbox">店员多推荐</label>
-            <label class="opt"><input type="checkbox">调整陈列</label>
-            <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder=""></span>
-          </td>
-          <td><textarea class="blank" placeholder=""></textarea></td>
-        </tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- 4.6 配饰需求 -->
-  <div class="card q" data-q="2.6 配饰需求（内裤 / 拖鞋）">
-    <div class="qtitle"><span class="qno">2.6</span><span>配饰需求：内裤 / 拖鞋</span></div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>● 内裤</span></div>
-    <div class="fillline"><span class="fl">内裤需求度：</span>
-      <label class="chip"><input type="checkbox">几乎没人问</label>
-      <label class="chip"><input type="checkbox">偶尔有人问</label>
-      <label class="chip"><input type="checkbox">经常有人问、缺货</label></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">内裤考虑的面料：</span><input class="blank full" placeholder=""></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">内裤码数需求：</span><input class="blank full" placeholder=""></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">内裤颜色需求：</span><input class="blank full" placeholder=""></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">内裤款式需求：</span><input class="blank full" placeholder=""></div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:10px"><span>● 拖鞋</span></div>
-    <div class="fillline"><span class="fl">什么客群问 / 买得多：</span><input class="blank full" placeholder=""></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">拖鞋款式需求：</span><input class="blank full" placeholder=""></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">拖鞋颜色需求：</span><input class="blank full" placeholder=""></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">拖鞋尺码需求：</span><input class="blank full" placeholder=""></div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:10px"><span>● 其他：</span><input class="blank" style="width:60%;border-bottom-color:#C2A896" placeholder=""></div>
-    <div class="fillline"><span class="fl">需求度：</span>
-      <label class="chip"><input type="checkbox">几乎没人问</label>
-      <label class="chip"><input type="checkbox">偶尔有人问</label>
-      <label class="chip"><input type="checkbox">经常有人问、缺货</label></div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">具体需求：</span><input class="blank full" placeholder=""></div>
-  </div>
-</section>
+  </div><div class="card q" data-q="2.4 缺货 TOP3">
+    <div class="qtitle"><span class="qno">2.4</span><span>缺货 TOP3</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="最近缺货最多的 3 款是什么?缺的品类+款型+颜色、频次、补齐预估能卖多少?是季节性缺还是结构性缺?顾客有没有说'要是你们能卖 XX 就好了'?"></textarea>
+  </div><div class="card q" data-q="2.6 配饰需求（内裤 / 拖鞋）">
+    <div class="qtitle"><span class="qno">2.6</span><span>配饰需求：内裤 / 拖鞋 / 其他</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="内裤/拖鞋的需求度如何?常问的面料、款式、颜色、码数是什么?还有什么其他配饰需求?"></textarea>
+  </div></section>
 
 <!-- ============ 三（新增）、第三段：顾客眼里 ============ -->
 <section class="sec" data-sec="第三段·顾客眼里">
@@ -635,45 +308,20 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
   <!-- 3.1 -->
   <div class="card q" data-q="3.1 顾客最认可的点">
     <div class="qtitle"><span class="qno">3.1</span><span>顾客最认可我们哪些点？</span></div>
-    <div class="opts" data-group="认可点">
-      <label class="opt"><input type="checkbox">价格实惠</label>
-      <label class="opt"><input type="checkbox">面料舒服</label>
-      <label class="opt"><input type="checkbox">版型上身好</label>
-      <label class="opt"><input type="checkbox">码数齐全</label>
-      <label class="opt"><input type="checkbox">款式更新快</label>
-      <label class="opt"><input type="checkbox">品质稳、耐穿</label>
-      <label class="opt"><input type="checkbox">导购推荐准、不硬推</label>
-      <label class="opt"><input type="checkbox">售后换码退换方便</label>
-      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder=""></span>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="顾客常夸我们什么?如价格、款式、服务等"></textarea>
   </div>
 
   <!-- 3.2 -->
   <div class="card q" data-q="3.2 顾客抱怨犹豫流失原因">
     <div class="qtitle"><span class="qno">3.2</span><span>顾客抱怨 / 犹豫 / 流失的原因</span></div>
-    <div class="opts" data-group="痛点">
-      <label class="opt"><input type="checkbox">觉得贵</label>
-      <label class="opt"><input type="checkbox">想要的款没货 / 断码</label>
-      <label class="opt"><input type="checkbox">款式老、上新慢</label>
-      <label class="opt"><input type="checkbox">质量不耐穿（起球、变形、褪色）</label>
-      <label class="opt"><input type="checkbox">尺码偏小或偏大</label>
-      <label class="opt"><input type="checkbox">面料不透气</label>
-      <label class="opt"><input type="checkbox">试衣不方便</label>
-      <label class="opt"><input type="checkbox">导购推得太猛</label>
-      <label class="opt"><input type="checkbox">门店环境乱、灯光暗、空调不凉快/热、过道窄</label>
-      <span class="fillline" style="display:inline-flex;align-items:center;gap:6px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder=""></span>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="顾客抱怨、犹豫或最后没买的原因是什么?"></textarea>
   </div>
 
   <!-- 3.3 -->
   <div class="card q" data-q="3.3 找码数找款的方式">
     <div class="qtitle"><span class="qno">3.3</span><span>顾客找码数 / 找款的方式</span></div>
-    <div class="opts" data-group="找款方式">
-      <label class="opt"><input type="checkbox">基本只要指定码 / 指定款</label>
-      <label class="opt"><input type="checkbox">愿意接受店员推荐其他码 / 其他款</label>
-      <label class="opt"><input type="checkbox">看情况，两者都有</label>
-    </div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">备注（什么情况下会接受推荐）：</span><input class="blank full" placeholder=""></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="顾客怎么找码数、找款的?导购代找还是自己翻?什么情况下愿意接受导购推荐?"></textarea>
+    <div class="fillline" style="margin-top:6px"><span class="fl">备注（什么情况下会接受推荐）：</span><input class="blank full" placeholder="如缺码、赶时间、有明确目标等"></div>
   </div>
 </section>
 
@@ -686,81 +334,27 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
     <div class="qtitle"><span class="qno">4.1</span><span>门店环境</span></div>
 
     <div class="qtitle" style="font-size:14px;margin-top:6px"><span>光线是否充足</span></div>
-    <div class="opts">
-      <label class="opt"><input type="radio" name="envLight">充足</label>
-      <label class="opt"><input type="radio" name="envLight">偏暗</label>
-      <label class="opt"><input type="radio" name="envLight">部分区域暗（试衣间 / 角落）</label>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="如自然光、灯光亮度、有无暗角"></textarea>
 
     <div class="qtitle" style="font-size:14px;margin-top:6px"><span>空调 / 风扇是否充足</span></div>
-    <div class="opts">
-      <label class="opt"><input type="radio" name="envAC">充足</label>
-      <label class="opt"><input type="radio" name="envAC">不足（夏季闷热）</label>
-      <label class="opt"><input type="radio" name="envAC">不足（冬季偏冷）</label>
-      <label class="opt"><input type="radio" name="envAC">时好时坏</label>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="如制冷/通风效果、夏天是否闷热"></textarea>
 
     <div class="qtitle" style="font-size:14px;margin-top:6px"><span>货架是否太密集、过道太拥挤</span></div>
-    <div class="opts">
-      <label class="opt"><input type="radio" name="envShelf">宽敞</label>
-      <label class="opt"><input type="radio" name="envShelf">略挤</label>
-      <label class="opt"><input type="radio" name="envShelf">太密集、过道拥挤</label>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="如通道宽度、取货是否方便"></textarea>
 
-    <div class="fillline"><span class="fl">其他（环境方面）：</span><input class="blank wide" placeholder=""></div>
+    <div class="fillline"><span class="fl">其他（环境方面）：</span><input class="blank wide" placeholder="还有无其他环境感受"></div>
   </div>
 
   <!-- 4.2 门店宣传 -->
   <div class="card q" data-q="4.2 门店宣传">
     <div class="qtitle"><span class="qno">4.2</span><span>门店宣传</span></div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>宣传方式（可多选）</span></div>
-    <div class="opts">
-      <label class="opt"><input type="checkbox">社群运营</label>
-      <label class="opt"><input type="checkbox">门口喇叭 / 海报</label>
-      <label class="opt"><input type="checkbox">老客口口相传</label>
-      <label class="opt"><input type="checkbox">短视频</label>
-      <label class="opt"><input type="checkbox">地推</label>
-      <span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder=""></span>
-    </div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>宣传频率</span></div>
-    <div class="opts">
-      <label class="opt"><input type="radio" name="promFreq">每天</label>
-      <label class="opt"><input type="radio" name="promFreq">每周几次</label>
-      <label class="opt"><input type="radio" name="promFreq">只在大促做</label>
-      <label class="opt"><input type="radio" name="promFreq">基本不做</label>
-    </div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:6px"><span>宣传辐射范围</span></div>
-    <div class="opts">
-      <label class="opt"><input type="radio" name="promRange">周边 1~3 公里</label>
-      <label class="opt"><input type="radio" name="promRange">周边 3~8 公里</label>
-      <label class="opt"><input type="radio" name="promRange">整个镇 / 片区</label>
-    </div>
-  </div>
-
-  <!-- 4.3 门店人员情况 -->
-  <div class="card q" data-q="4.3 门店人员情况">
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="门店做了哪些宣传?多久一次、能辐射到多大范围?"></textarea>
+  </div>  <div class="card q" data-q="4.3 门店人员情况">
     <div class="qtitle"><span class="qno">4.3</span><span>门店人员情况</span></div>
-
-    <div class="fillline"><span class="fl">人员数量：正式</span><input class="blank" style="width:80px" placeholder=""><span class="fl">　兼职工</span><input class="blank" style="width:80px" placeholder=""></div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:8px"><span>人员稳定性</span></div>
-    <div class="opts">
-      <label class="opt"><input type="radio" name="staffStable">稳定</label>
-      <label class="opt"><input type="radio" name="staffStable">流动大</label>
-      <label class="opt"><input type="radio" name="staffStable">季节性波动（节假日临时加人）</label>
-    </div>
-
-    <div class="fillline" style="margin-top:8px"><span class="fl">新旧员工比例：老员工</span><input class="blank" style="width:70px" placeholder=""><span class="fl">（在职 ≥ 1 年）</span><span class="fl">　新员工</span><input class="blank" style="width:70px" placeholder="">　（或占比：新员工约 <input class="blank" style="width:60px" placeholder="">）</div>
-
-    <div class="qtitle" style="font-size:14px;margin-top:8px"><span>人员所在专区是否固定</span></div>
-    <div class="opts">
-      <label class="opt"><input type="radio" name="staffZone">固定专区</label>
-      <label class="opt"><input type="radio" name="staffZone">不固定、轮岗</label>
-      <label class="opt"><input type="radio" name="staffZone">忙时灵活调配</label>
-    </div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="正式员工/兼职数量、新旧员工（在职 ≥ 1 年）比例、人员稳定性"></textarea>
+  </div><div class="card q" data-q="4.4 人员所在专区是否固定">
+    <div class="qtitle"><span class="qno">4.4</span><span>人员所在专区是否固定</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="专区固定/轮流/灵活调配"></textarea>
   </div>
 </section>
 
@@ -771,145 +365,22 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
   <!-- 5.1 -->
   <div class="card q" data-q="5.1 一句话定位">
     <div class="qtitle"><span class="qno">5.1</span><span>一句话定位</span></div>
-    <div class="fillline"><span class="fl">答：</span><input class="blank full" placeholder=""></div>
-  </div>
-
-  <!-- 5.2 -->
-  <div class="card q" data-q="5.2 卖得最好 / 最差风格">
-    <div class="qtitle"><span class="qno">5.2</span><span>卖得最好 / 最差的风格</span></div>
-    <div class="tblwrap"><table class="frm">
-      <thead><tr><th>维度</th><th>风格</th><th>举 1~2 个具体款</th><th>卖得动 / 不动的原因</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="rk">卖得最好</td>
-          <td><input class="blank" style="min-width:120px" placeholder=""></td>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:120px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="styleBest"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-            <div class="uprow" style="margin-top:4px">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="styleBest"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td><textarea class="blank" placeholder=""></textarea></td>
-        </tr>
-        <tr>
-          <td class="rk">卖不动</td>
-          <td><input class="blank" style="min-width:120px" placeholder=""></td>
-          <td>
-            <div class="scanbox">
-              <input class="blank" style="min-width:120px" placeholder="">
-              <label class="upbtn">扫码<input type="file" class="upfile" accept="image/*" capture="environment" data-scan="styleWorst"></label>
-            </div>
-            <div class="scantip" style="margin-top:4px"></div>
-            <div class="uprow" style="margin-top:4px">
-              <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="styleWorst"></label>
-              <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-            </div>
-          </td>
-          <td><textarea class="blank" placeholder=""></textarea></td>
-        </tr>
-      </tbody>
-    </table></div>
-    <div class="ybox">
-      <div class="h">追问：卖不动的，你觉得是——</div>
-      <div class="opts">
-        <label class="opt"><input type="checkbox">款式不对路（客人不穿这种）</label>
-        <label class="opt"><input type="checkbox">价格不对（太贵 / 太便宜）</label>
-        <label class="opt"><input type="checkbox">陈列位置不好</label>
-        <label class="opt"><input type="checkbox">尺码不全</label>
-        <span class="fillline" style="display:inline-flex;align-items:center;gap:6px"><label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:150px" placeholder=""></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 5.3 -->
-  <div class="card q" data-q="5.3 特色专区">
-    <div class="qtitle"><span class="qno">5.3</span><span>特色专区</span></div>
-    <div class="ybox">
-      <div class="h">追问 1：你看你熟客里，有没有什么<b>群体是被忽略的</b>？</div>
-      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder=""></div>
-    </div>
-    <div class="ybox">
-      <div class="h">追问 2：如果只能建<b>一个</b>专区，你会选什么？为什么？</div>
-      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder=""></div>
-    </div>
-    <div class="ybox">
-      <div class="h">追问 3：这个专区大概要多大？放什么品类？</div>
-      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder=""></div>
-    </div>
-    <div class="ybox">
-      <div class="h">追问 4：假设增加某个专区，你们认为需要<b>多加几个款</b>？</div>
-      <div class="row"><span class="fl">答：</span><input class="blank" style="width:70%" placeholder=""></div>
-    </div>
-    <div class="ybox">
-      <div class="h">追问 5：还有吗？第二个？第三个？</div>
-      <div class="row"><span class="fl">第二：</span><input class="blank" style="width:68%" placeholder=""></div>
-      <div class="row"><span class="fl">第三：</span><input class="blank" style="width:68%" placeholder=""></div>
-    </div>
-    <div class="ybox">
-      <div class="h">追问 6：如果上面这些都不缺，这家店是不是应该<b>维持现状</b>？为什么？</div>
-      <div class="row"><label class="chip"><input type="checkbox">维持现状</label> —— 原因：<input class="blank" style="width:50%" placeholder=""></div>
-      <div class="row"><label class="chip"><input type="checkbox">还是要建</label> —— 建什么：<input class="blank" style="width:50%" placeholder=""></div>
-    </div>
-  </div>
-
-  <!-- 5.4 陈列情况 -->
-  <div class="card q" data-q="5.4 陈列情况">
-    <div class="qtitle"><span class="qno">5.4</span><span>陈列情况</span></div>
-    <div class="opts" data-group="陈列">
-      <label class="opt"><input type="checkbox">完全按公司指引</label>
-      <label class="opt"><input type="checkbox">店员 / 店长有自己发挥、搭配</label>
-      <label class="opt"><input type="checkbox">会根据顾客建议调整</label>
-    </div>
-    <div class="fillline" style="margin-top:6px"><span class="fl">备注：</span><input class="blank full" placeholder=""></div>
-  </div>
-</section>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="用一句话说清这家店主要服务谁、卖什么、有什么特点"></textarea>
+  </div>  <div class="card q" data-q="5.2 特色专区 / 潜力品类">
+    <div class="qtitle"><span class="qno">5.2</span><span>特色专区 / 潜力品类</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="熟客里有没有被忽略的群体?如果只能建一个专区选什么、为什么、多大、放什么品类?还需多加几个款?第二、第三专区?维持现状还是扩建?"></textarea>
+  </div><div class="card q" data-q="5.3 陈列情况">
+    <div class="qtitle"><span class="qno">5.3</span><span>陈列情况</span></div>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="陈列是否清晰、吸引人?有无问题?陈列是按公司指导执行,还是门店自己决定?"></textarea>
+  </div></section>
 
 <!-- ============ 六、本地有什么“不一样” ============ -->
 <section class="sec" data-sec="本地特色">
   <div class="sectop"><h2>第六段 · 本地有什么“不一样”</h2></div>
   <div class="card q" data-q="6.1 本地差异（追问 + 清单）">
-    <div class="ybox">
-      <div class="h">追问 1：附近学校情况</div>
-      <div class="row">周边小学 __ 所、初中 __ 所、高中 __ 所；离门店多远（到达时间 / 距离）：<input class="blank" style="width:50%" placeholder=""></div>
-      <div class="row">学生来得多吗？他们的需求接得住吗？<input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 2：门店周边有没有新开什么门店抢走客流？</div>
-      <div class="row"><input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 3：店员自己一般在什么店买衣服多？</div>
-      <div class="row"><input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 4：有工厂 / 工地吗？工服 / 体力劳动者有需求吗？</div>
-      <div class="row">有 / 无；需求：<input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 5：附近是景区 / 文旅集中地吗？游客来买什么？</div>
-      <div class="row"><input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px"><mark>追问 6：本地节庆 / 民俗是什么？带来什么特殊需求？</mark></div>
-      <div class="row"><input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 7：大码身型多吗？</div>
-      <div class="row"><input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px"><mark>追问 8：季节有什么特殊的？（降温早 / 晚、回南天、雾大……）</mark></div>
-      <div class="row"><input class="blank full" placeholder=""></div>
-      <div class="h" style="margin-top:6px">追问 9：还有什么别的——你们这边独有的？</div>
-      <div class="row"><input class="blank full" placeholder=""></div>
-    </div>
-
-    <div class="qtitle" style="margin-top:10px"><span class="qno">6.1</span><span>本地差异清单（勾选并填写）</span></div>
-    <div class="tblwrap"><table class="frm">
-      <thead><tr><th>类别</th><th>具体表现</th><th>涉及品类</th><th>涉及尺码 / 颜色</th><th>时间窗</th></tr></thead>
-      <tbody>
-        <tr><td><label class="chip"><input type="checkbox">学校</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank" placeholder=""></td></tr>
-        <tr><td><label class="chip"><input type="checkbox">工厂</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
-        <tr><td><label class="chip"><input type="checkbox">旅游</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
-        <tr><td><label class="chip"><input type="checkbox">节庆</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
-        <tr><td><label class="chip"><input type="checkbox">大码</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
-        <tr><td><label class="chip"><input type="checkbox">季节</label></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
-        <tr><td><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:64%"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td><td><input class="blank"></td></tr>
-      </tbody>
-    </table></div>
-  </div>
-</section>
+    <div class="qtitle"><span class="qno">6.1</span><span>本地差异</span></div>
+    <textarea class="blank" style="width:100%;min-height:100px" placeholder="周边学校、新开门店抢客流、店员常购店铺、工厂/工地/工服需求、景区/文旅需求、本地节庆民俗、大码身型、季节特点、本店独有的本地化差异等,请逐条描述"></textarea>
+  </div></section>
 
 
 <!-- ============ 七、收口 + 拍照 ============ -->
@@ -919,26 +390,14 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
   <!-- 7.1 -->
   <div class="card q" data-q="7.1 收口 + 拍照">
     <div class="qtitle"><span class="qno">7.1</span><span>收口 + 拍照</span></div>
-    <div class="photos">
+    <div class="photos" data-multi>
       <div class="uprow">
-        <label class="upbtn">① 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="1"></label>
-        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-      </div>
-      <div class="uprow">
-        <label class="upbtn">② 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="2"></label>
-        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-      </div>
-      <div class="uprow">
-        <label class="upbtn">③ 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="3"></label>
-        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
-      </div>
-      <div class="uprow">
-        <label class="upbtn">④ 拍照 / 选择照片<input type="file" class="upfile" accept="image/*" capture="environment" data-photo="4"></label>
+        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
         <div class="thumbwrap"><img class="thumb" style="display:none"></div>
       </div>
     </div>
-  </div>
-</section>
+    <textarea class="blank" style="width:100%;min-height:80px" placeholder="本次访谈收尾情况、已拍 / 待拍照片清单"></textarea>
+  </div></section>
 
 </main>
 <div class="stickact">
@@ -952,10 +411,7 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
   <div class="modal">
     <h3>导出反馈文本（可复制 / 下载后反馈商品部）</h3>
     <div class="mbody">
-      <div class="opts" style="margin-bottom:8px">
-        <label class="opt"><input type="checkbox" id="incEmpty">包含未作答题目（导出完整清单）</label>
-        <label class="opt"><input type="checkbox" id="incSpeech">包含话术原文（便于商品部理解语境）</label>
-      </div>
+      <textarea class="blank" style="width:100%;min-height:80px" placeholder="请填写…"></textarea>
       <textarea id="exportOut" readonly></textarea>
     </div>
     <div class="mfoot">
@@ -1081,28 +537,29 @@ function missRow(rk){
     '<td class="rk">'+rk+'</td>' +
     '<td><input class="blank" style="min-width:150px" placeholder=""></td>' +
     '<td><div class="cellopts">' +
-      '<label class="chip"><input type="checkbox">未备货</label>' +
-      '<label class="chip"><input type="checkbox">断码</label>' +
-      '<label class="chip"><input type="checkbox">断色</label>' +
-      '<label class="chip"><input type="checkbox">季节未到</label>' +
-      '<span class="fillline" style="display:inline-flex;align-items:center;gap:4px"><label class="chip"><input type="checkbox">其他：</label><input class="blank" style="width:90px" placeholder=""></span>' +
+      '' +
+      '' +
+      '' +
+      '' +
+      '<span class="fillline" style="display:inline-flex;align-items:center;gap:4px"><input class="blank" style="width:90px" placeholder=""></span>' +
     '</div></td>' +
     '<td><div class="cellopts">' +
-      '<label class="chip"><input type="checkbox">经常</label>' +
-      '<label class="chip"><input type="checkbox">偶尔</label>' +
-      '<label class="chip"><input type="checkbox">一次</label>' +
+      '' +
+      '' +
+      '' +
     '</div></td>' +
     '<td><div class="cellopts">' +
       '<span class="fillline" style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap">' +
-        '<label class="chip"><input type="checkbox">能，约</label>' +
+        '' +
         '<input class="blank" style="width:50px" placeholder=""><span style="font-size:12px">件</span>' +
       '</span>' +
-      '<div style="margin-top:2px"><label class="chip"><input type="checkbox">不好说</label></div>' +
+      '<div style="margin-top:2px"></div>' +
     '</div></td>';
   return tr;
 }
 function buildMissRows(){
   const tbody = $("#tblMissBody");
+  if(!tbody) return;
   ["①","②","③"].forEach(rk=>tbody.appendChild(missRow(rk)));
 }
 
@@ -1260,7 +717,38 @@ async function tryScan(file, tipEl, inputEl){
   }catch(e){ if(tipEl) tipEl.textContent = "识别失败，请手动输入款号"; }
 }
 function handleUpfile(el){
-  const file = el.files[0]; if(!file) return;
+  const photos = el.closest(".photos");
+  const isMulti = photos && photos.dataset.multi;
+  const files = Array.from(el.files || []);
+  if(!files.length) return;
+  if(isMulti){
+    const currentRow = el.closest(".uprow");
+    files.forEach((file, idx) => {
+      let row = currentRow;
+      if(idx > 0){
+        row = currentRow.cloneNode(true);
+        const newInput = row.querySelector(".upfile");
+        if(newInput){ newInput.value = ""; }
+        const thumb = row.querySelector(".thumb");
+        if(thumb){ thumb.src = ""; thumb.style.display = "none"; }
+        currentRow.parentNode.insertBefore(row, currentRow.nextSibling);
+      }
+      const img = row.querySelector(".thumb");
+      previewFile(file, img);
+      const btn = row.querySelector(".upbtn");
+      if(btn) btn.style.display = "none";
+    });
+    const fresh = currentRow.cloneNode(true);
+    const freshInput = fresh.querySelector(".upfile");
+    if(freshInput) freshInput.value = "";
+    const freshThumb = fresh.querySelector(".thumb");
+    if(freshThumb){ freshThumb.src = ""; freshThumb.style.display = "none"; }
+    const freshBtn = fresh.querySelector(".upbtn");
+    if(freshBtn) freshBtn.style.display = "";
+    photos.appendChild(fresh);
+    return;
+  }
+  const file = files[0];
   const container = el.closest(".uprow") || el.closest("td");
   const img = container ? container.querySelector(".thumb") : null;
   previewFile(file, img);
@@ -1425,7 +913,7 @@ function bindConditional(){
   groups.forEach((_,key)=> updateConditionalGroup(key));
 }
 function updateConditionalGroup(key){
-  const labs = [...document.querySelectorAll(`[data-cond="${key}"][data-target]`)];
+  const labs = [...document.querySelectorAll(`[][data-target]`)];
   const selected = labs.filter(l => l.querySelector('input[type=checkbox]')?.checked).map(l => l.dataset.target);
   const targets = new Set(labs.map(l => l.dataset.target));
   targets.forEach(id=>{
