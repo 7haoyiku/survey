@@ -272,7 +272,8 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
     <textarea class="blank" style="width:100%;min-height:80px" placeholder="风格、款式等，畅销原因"></textarea>
     <div class="photos" data-multi>
       <div class="uprow">
-        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment"></label>
+        <label class="upbtn">从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
         <div class="thumbwrap"><img class="thumb" style="display:none"></div>
       </div>
     </div>
@@ -280,7 +281,8 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
     <textarea class="blank" style="width:100%;min-height:80px" placeholder="风格、款式等，滞销原因"></textarea>
     <div class="photos" data-multi>
       <div class="uprow">
-        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment"></label>
+        <label class="upbtn">从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
         <div class="thumbwrap"><img class="thumb" style="display:none"></div>
       </div>
     </div>
@@ -289,7 +291,8 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
     <textarea class="blank" style="width:100%;min-height:80px" placeholder="款式、没买原因"></textarea>
     <div class="photos" data-multi>
       <div class="uprow">
-        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment"></label>
+        <label class="upbtn">从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
         <div class="thumbwrap"><img class="thumb" style="display:none"></div>
       </div>
     </div>
@@ -392,7 +395,8 @@ footer{max-width:1000px;margin:26px auto;text-align:center;color:#8B7575;font-si
     <div class="qtitle"><span class="qno">7.1</span><span>收口 + 拍照</span></div>
     <div class="photos" data-multi>
       <div class="uprow">
-        <label class="upbtn">拍照 / 从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment"></label>
+        <label class="upbtn">从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
         <div class="thumbwrap"><img class="thumb" style="display:none"></div>
       </div>
     </div>
@@ -735,16 +739,14 @@ function handleUpfile(el){
       }
       const img = row.querySelector(".thumb");
       previewFile(file, img);
-      const btn = row.querySelector(".upbtn");
-      if(btn) btn.style.display = "none";
+      row.querySelectorAll(".upbtn").forEach(b=>{ b.style.display = "none"; });
     });
     const fresh = currentRow.cloneNode(true);
     const freshInput = fresh.querySelector(".upfile");
     if(freshInput) freshInput.value = "";
     const freshThumb = fresh.querySelector(".thumb");
     if(freshThumb){ freshThumb.src = ""; freshThumb.style.display = "none"; }
-    const freshBtn = fresh.querySelector(".upbtn");
-    if(freshBtn) freshBtn.style.display = "";
+    fresh.querySelectorAll(".upbtn").forEach(b=>{ b.style.display = ""; });
     photos.appendChild(fresh);
     return;
   }
