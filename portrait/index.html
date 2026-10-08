@@ -14,8 +14,9 @@ body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:
 .topbar .ttl{font-weight:700;font-size:16px;margin-right:auto}
 .tbtn{background:#fff;color:var(--head);border:none;border-radius:6px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer}
 .tbtn:hover{opacity:.88}
-.hrow{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:8px;justify-content:center}
-.hrow label{font-size:12px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:3px;flex:0 1 170px}
+.hrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 10px;margin-top:8px}
+.hrow label{font-size:12px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:3px}
+@media(max-width:640px){.hrow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .hrow input{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:6px 10px;font-size:13px;color:#fff;width:100%;color-scheme:dark}
 .hrow input::placeholder{color:rgba(255,255,255,.6)}
 .pgrow{display:flex;align-items:center;gap:10px;margin-top:9px;font-size:12px;color:rgba(255,255,255,.85);white-space:nowrap}
