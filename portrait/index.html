@@ -409,7 +409,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
 <section class="sec" id="tagSec">
   <div class="sectop"><h2>八、自动标签卡</h2></div>
   <div class="card"><div class="tagpanel" id="tagPanel"><span class="tag empty">（勾选上方内容后自动生成标签）</span></div>
-  <p class="tagtip">系统按 6 大维度各出 1 个综合标签（客群 / 体型尺码 / 穿着风格 / 消费力 / 成交连带 / 门店时机），每个标签会汇总该维度里你勾选的全部信息，一条不漏；随勾随变，导出时一并带出。</p></div>
+  <p class="tagtip">系统按 7 条逻辑线各出 1 个标签（客群 / 体型尺码 / 穿着风格 / 消费力 / 成交连带 / 门店位置 / 近期时机），同一标签内只放同一件事的信息，互不混杂；随勾随变，导出时一并带出。</p></div>
 </section>
 </main>
 <footer>门店消费者画像采集表 v1.0｜数据仅保存在本机浏览器，可“暂时保存 / 导出反馈 / 打印”归档<br>建议在 Chrome / Edge 中打开；手机、平板亦可使用</footer>
@@ -534,16 +534,20 @@ function computeTags(){
     if(hit('≥3 件'))deal.push('高连带');
   }
   if(deal.length)out.push(deal.join('·'));
-  // 6) 门店与时机
-  const shop=[];
-  if(hit('商场内')&&hit('商场角落'))shop.push('商场死角');
-  else if(hit('商场内')&&hit('商场进门'))shop.push('商场旺位');
-  if(hit('社区')||hit('住宅小区'))shop.push('社区店');
-  if(hit('街铺'))shop.push('街铺店');
-  if(hit('隔壁同品类')&&hit('强截流'))shop.push('竞品截客');
-  if(hit('降温'))shop.push('降温');
-  if(hit('新店开业'))shop.push('新店分流');
-  if(shop.length)out.push(shop.join('·'));
+  // 6) 门店位置（店在哪、周边竞争——同一件事）
+  const loc=[];
+  if(hit('商场内')&&hit('商场角落'))loc.push('商场死角');
+  else if(hit('商场内')&&hit('商场进门'))loc.push('商场旺位');
+  if(hit('社区')||hit('住宅小区'))loc.push('社区');
+  if(hit('街铺'))loc.push('街铺');
+  if(hit('隔壁同品类')&&hit('强截流'))loc.push('竞品截流');
+  if(loc.length)out.push(loc.join('·'));
+  // 7) 近期时机（季节/事件——和位置无关，单独一签）
+  const tim=[];
+  if(hit('降温'))tim.push('降温');
+  if(hit('新店开业'))tim.push('新店分流');
+  if(hit('大促'))tim.push('大促期');
+  if(tim.length)out.push(tim.join('·'));
   return out;
 }
 function updateTags(){
