@@ -75,29 +75,19 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
     <div class="sectop"><h2>基础采集信息</h2></div>
   <div class="card q" data-q="0.1">
     <div class="qtitle"><span class="qno">0.1</span><span>店铺性质</span></div>
-    <div class="opts">
-      <label class="opt"><input type="checkbox">街铺</label>
-      <label class="opt"><input type="checkbox">商场专柜店</label>
-      <label class="opt"><input type="checkbox">步行街店</label>
-      <label class="opt"><input type="checkbox">社区店</label>
-      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
-    </div>
-    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+    <div class="fillline"><span class="fl">店铺性质：</span><input class="blank" placeholder="如 街铺 / 商场专柜店 / 步行街店 / 社区店"></div>
   </div>
   <div class="card q" data-q="0.2">
     <div class="qtitle"><span class="qno">0.2</span><span>到店时间段</span></div>
     <div class="fillline"><span class="fl">本次到店时间：</span><input class="blank" placeholder="如 上午 10:00 / 傍晚 18:00，停留约多久"></div>
-    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
   </div>
   <div class="card q" data-q="0.3">
     <div class="qtitle"><span class="qno">0.3</span><span>气温与体感</span></div>
     <div class="fillline"><span class="fl">天气 / 体感：</span><input class="blank" placeholder="如 32℃ 闷热 / 18℃ 凉爽 / 下雨"></div>
-    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
   </div>
   <div class="card q" data-q="0.4">
     <div class="qtitle"><span class="qno">0.4</span><span>采集样本数</span></div>
     <div class="fillline"><span class="fl">有效观察 / 访谈人数：</span><input class="blank" placeholder="约 ___ 人"></div>
-    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
   </div>
   </section>  <section class="sec">
     <div class="sectop"><h2>一、客群画像（到店顾客整体长什么样）</h2></div>
@@ -113,6 +103,9 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
       <label class="opt"><input type="checkbox">男性多</label>
       <label class="opt"><input type="checkbox">男性较少</label>
       <label class="opt"><input type="checkbox">男性稀疏</label>
+      <label class="opt"><input type="checkbox">女性多</label>
+      <label class="opt"><input type="checkbox">女性较少</label>
+      <label class="opt"><input type="checkbox">女性稀疏</label>
     </div>    <div class="fillline"><span class="fl">补充说明：</span><input class="blank" style="width:100%" placeholder="如 男女比例、谁主导购买"></div>
     <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
   </div>
@@ -163,7 +156,22 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
   </div>
   <div class="card q" data-q="1.7">
     <div class="qtitle"><span class="qno">1.7</span><span>整体穿着风格</span></div>
-    <textarea class="blank" style="width:100%;min-height:70px" placeholder="描述顾客整体穿搭风格，如潮流辣妹 / 通勤简约 / 休闲舒适 / 带娃家长等"></textarea>
+    <div class="fl" style="margin-top:4px">女：</div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">潮流辣妹女（短上衣 / 工装裤 / 厚底鞋）</label>
+      <label class="opt"><input type="checkbox">通勤简约女（衬衫 / 西装裤 / 小皮鞋）</label>
+      <label class="opt"><input type="checkbox">休闲舒适女（T / 卫裤 / 运动鞋）</label>
+      <label class="opt"><input type="checkbox">气质温柔女（针织 / 连衣裙）</label>
+      <label class="opt"><input type="checkbox">带娃家长（推车 / 妈咪包 / 孩子同行）</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:160px" placeholder="写一下">
+    </div>
+    <div class="fl" style="margin-top:6px">男：</div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">通勤简约男（衬衫 / 西装裤 / 小皮鞋）</label>
+      <label class="opt"><input type="checkbox">简约日常男（T / 直筒裤 / 运动鞋）</label>
+      <label class="opt"><input type="checkbox">潮男（工装裤 / 板鞋）</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:160px" placeholder="写一下">
+    </div>
     <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
   </div>
   <div class="card q" data-q="1.8">
@@ -273,14 +281,14 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
       <label class="opt"><input type="checkbox">工业园</label>
       <label class="opt"><input type="checkbox">学校</label>
       <label class="opt"><input type="checkbox">医院</label>
-      <label class="opt"><input type="checkbox">对街步行街</label>
-      <label class="opt"><input type="checkbox">对街商场</label>
-      <label class="opt"><input type="checkbox">隔壁同品类</label>
+      <label class="opt"><input type="checkbox" class="jk">对街步行街</label>
+      <label class="opt"><input type="checkbox" class="jk">对街商场</label>
+      <label class="opt"><input type="checkbox" class="jk">隔壁同品类</label>
       <label class="opt"><input type="checkbox">大型超市</label>
       <label class="opt"><input type="checkbox">夜市</label>
       <label class="opt"><input type="checkbox">无</label>
       <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
-    </div>    <div class="fillline"><span class="fl">标记是否为截客点：</span><input class="blank" style="width:100%" placeholder="哪些业态在截咱们的客？"></div>
+    </div>    <div class="fillline" id="jkWrap" style="display:none"><span class="fl">标记是否为截客点：</span><input class="blank" style="width:100%" placeholder="哪些业态在截咱们的客？"></div>
     <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
   </div>
   <div class="card q" data-q="5.2">
@@ -338,11 +346,17 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
   <div class="card q" data-q="7.1">
     <div class="qtitle"><span class="qno">7.1</span><span>门店位置</span></div>
     <div class="opts">
-      <label class="opt"><input type="checkbox">商场内（____层，进门 / 角落）</label>
+      <label class="opt"><input type="checkbox" id="optMall">商场内</label>
       <label class="opt"><input type="checkbox">步行街内</label>
       <label class="opt"><input type="checkbox">街铺</label>
       <label class="opt"><input type="checkbox">社区</label>
       <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <div id="mallWrap" style="display:none">
+      <div class="fillline"><span class="fl">商场内位置：</span>第<input class="blank" style="width:70px" placeholder="几">层
+        <label class="opt"><input type="radio" name="mallpos">商场进门</label>
+        <label class="opt"><input type="radio" name="mallpos">商场角落</label>
+      </div>
     </div>
     <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
   </div>
@@ -425,7 +439,14 @@ function updatePg(){
   const pg=document.querySelector('nav .pg');if(pg)pg.textContent='已填 '+done+' / '+total;
 }
 document.addEventListener('input',e=>{save();updatePg();});
-document.addEventListener('change',e=>{save();updatePg();});
+document.addEventListener('change',e=>{save();updatePg();syncCond();});
+function syncCond(){
+  const jw=document.getElementById('jkWrap');
+  if(jw)jw.style.display=[...document.querySelectorAll('input.jk')].some(i=>i.checked)?'flex':'none';
+  const m=document.getElementById('optMall');
+  const mw=document.getElementById('mallWrap');
+  if(mw)mw.style.display=(m&&m.checked)?'block':'none';
+}
 function handleUpfile(el){
   const photos=el.closest('.photos');const isMulti=photos&&photos.dataset.multi;
   const files=Array.from(el.files||[]);if(!files.length)return;
@@ -468,7 +489,7 @@ function download(){
   a.download='门店消费者画像_'+ (document.getElementById('store').value||'') +'_'+ (document.getElementById('date').value||'') +'.txt';
   a.click();
 }
-window.addEventListener('DOMContentLoaded',()=>{load();buildNav();
+window.addEventListener('DOMContentLoaded',()=>{load();buildNav();syncCond();
   document.getElementById('btnSave').onclick=()=>{save();alert('已保存到本机浏览器');};
   document.getElementById('btnExport').onclick=openExport;
   document.getElementById('btnPrint').onclick=()=>window.print();
