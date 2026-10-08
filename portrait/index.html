@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>门店消费者画像采集表 v1.0</title>
 <style>
-:root{--head:#7a1f2b;--sec:#b23a48;--bg:#f4f1ec;--line:#e7ddd2;--ink:#2a2a2a;--mut:#8a8076}
+:root{--head:#901020;--sec:#B52A3A;--bg:#FFF9E6;--line:#EADBC8;--ink:#2a2a2a;--mut:#8a8076}
 *{box-sizing:border-box}
 body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
 .topbar{position:sticky;top:0;z-index:30;background:var(--head);color:#fff;padding:8px 14px 10px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
@@ -28,22 +28,26 @@ nav .pg{margin-left:auto;font-size:12px;color:var(--mut)}
 main{max-width:880px;margin:14px auto;padding:0 12px 90px}
 .sectop{display:flex;align-items:center;gap:10px;padding:10px 2px 4px;border-bottom:2px solid var(--sec);margin-bottom:6px}
 .sectop h2{font-size:18px;color:var(--head);margin:0;flex:1}
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;box-shadow:0 1px 3px rgba(90,10,20,.05)}
 .qtitle{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
 .qno{background:var(--head);color:#fff;border-radius:6px;padding:1px 8px;font-size:13px;font-weight:700;white-space:nowrap}
-.qtitle>span:last-child{font-weight:700;font-size:15px}
+.qtitle>span:last-child{font-weight:700;font-size:15px;color:var(--head)}
 .dur{margin-left:auto;font-size:11px;color:var(--head);background:#FBEAEA;border-radius:99px;padding:2px 8px}
-.opts{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
-.opt{display:inline-flex;align-items:center;gap:4px;background:#faf4f1;border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:13px;cursor:pointer}
-.opt input{margin:0}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0;align-items:center}
+.opt{display:inline-flex;align-items:center;gap:5px;border:1px solid #D9C8B8;background:#fff;border-radius:99px;padding:3px 10px;cursor:pointer;user-select:none;transition:.15s;font-size:13.5px}
+.opt:hover{border-color:var(--sec);background:#FFF5E6}
+.opt:has(input:checked){background:var(--head);border-color:var(--head);color:#fff}
+.opt input{width:16px;height:16px;accent-color:#fff;margin:0}
 .fillline{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:6px 0}
 .fl{font-size:13px;color:#555;white-space:nowrap}
-.blank{border:1px solid #d8cdbf;border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fffdfb}
-textarea.blank{resize:vertical;display:block}
+.blank{background:transparent;border:none;border-bottom:1.5px dashed #C2A896;min-width:120px;padding:2px 4px;outline:none;border-radius:0;font-size:13.5px;font-family:inherit}
+.blank:focus{border-bottom-color:var(--sec);border-bottom-style:solid;background:#FFF8F0}
+textarea.blank{width:100%;resize:vertical;display:block;min-height:38px;border:1px dashed #C2A896;border-radius:6px;background:#fff;padding:5px}
+textarea.blank:focus{border:1px solid var(--sec)}
 .tblwrap{overflow-x:auto;margin:6px 0}
 table.frm{border-collapse:collapse;width:100%;font-size:13px}
 table.frm th,table.frm td{border:1px solid var(--line);padding:5px 8px;text-align:center}
-table.frm th{background:#f6e9ea;color:var(--head)}
+table.frm th{background:#FBEAEA;color:var(--head)}
 table.frm td:first-child,table.frm th:first-child{text-align:left}
 .optc{display:inline-flex}
 .photos{display:flex;flex-direction:column;gap:8px;margin:6px 0}
