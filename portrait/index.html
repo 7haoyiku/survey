@@ -8,11 +8,13 @@
 :root{--head:#7a1f2b;--sec:#b23a48;--bg:#f4f1ec;--line:#e7ddd2;--ink:#2a2a2a;--mut:#8a8076}
 *{box-sizing:border-box}
 body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
-.topbar{position:sticky;top:0;z-index:20;background:var(--head);color:#fff;padding:8px 14px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
-.topbar .ttl{font-weight:700;font-size:16px;margin-right:auto}
-.topbar label{font-size:13px;opacity:.9}
-.topbar input{background:rgba(255,255,255,.92);border:none;border-radius:5px;padding:4px 8px;font-size:13px;color:#222;margin-left:4px}
-nav{position:sticky;top:46px;z-index:15;background:#fff;border-bottom:1px solid var(--line);padding:6px 10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.topbar{background:var(--head);color:#fff;padding:8px 14px 10px;z-index:20}
+.topbar .ttl{font-weight:700;font-size:16px;display:block;margin-bottom:6px}
+.hrow{display:flex;flex-wrap:wrap;gap:8px 12px}
+.hrow label{font-size:12px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:3px}
+.hrow input{background:rgba(255,255,255,.95);border:none;border-radius:5px;padding:5px 8px;font-size:13px;color:#222;width:170px}
+.hrow input[type=date]{width:150px}
+nav{position:sticky;top:0;z-index:15;background:#fff;border-bottom:1px solid var(--line);padding:6px 10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 nav a{font-size:12px;color:var(--head);text-decoration:none;background:#f6e9ea;border:1px solid #ecd6d8;border-radius:99px;padding:3px 10px}
 nav .pg{margin-left:auto;font-size:12px;color:var(--mut)}
 main{max-width:880px;margin:14px auto;padding:0 12px 90px}
@@ -63,33 +65,19 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
 <body>
 <div class="topbar">
   <span class="ttl">门店消费者画像采集表</span>
-  <span id="meta">
+  <div class="hrow" id="meta">
     <label>门店<input id="store" placeholder="门店名称"></label>
-    <label>督导<input id="sup" placeholder="姓名"></label>
+    <label>巡店人<input id="sup" placeholder="姓名"></label>
     <label>日期<input id="date" type="date"></label>
-  </span>
+    <label>店铺性质<input id="shop_type" placeholder="街铺 / 商场专柜 / 步行街 / 社区"></label>
+    <label>到店时间段<input id="visit_time" placeholder="如 上午 10:00，停留约 1 小时"></label>
+    <label>气温与体感<input id="weather" placeholder="如 32℃ 闷热 / 下雨"></label>
+    <label>采集样本数<input id="sample_n" placeholder="约 ___ 人"></label>
+  </div>
 </div>
 <nav id="nav"></nav>
 <main>
   <section class="sec">
-    <div class="sectop"><h2>基础采集信息</h2></div>
-  <div class="card q" data-q="0.1">
-    <div class="qtitle"><span class="qno">0.1</span><span>店铺性质</span></div>
-    <div class="fillline"><span class="fl">店铺性质：</span><input class="blank" placeholder="如 街铺 / 商场专柜店 / 步行街店 / 社区店"></div>
-  </div>
-  <div class="card q" data-q="0.2">
-    <div class="qtitle"><span class="qno">0.2</span><span>到店时间段</span></div>
-    <div class="fillline"><span class="fl">本次到店时间：</span><input class="blank" placeholder="如 上午 10:00 / 傍晚 18:00，停留约多久"></div>
-  </div>
-  <div class="card q" data-q="0.3">
-    <div class="qtitle"><span class="qno">0.3</span><span>气温与体感</span></div>
-    <div class="fillline"><span class="fl">天气 / 体感：</span><input class="blank" placeholder="如 32℃ 闷热 / 18℃ 凉爽 / 下雨"></div>
-  </div>
-  <div class="card q" data-q="0.4">
-    <div class="qtitle"><span class="qno">0.4</span><span>采集样本数</span></div>
-    <div class="fillline"><span class="fl">有效观察 / 访谈人数：</span><input class="blank" placeholder="约 ___ 人"></div>
-  </div>
-  </section>  <section class="sec">
     <div class="sectop"><h2>一、客群画像（到店顾客整体长什么样）</h2></div>
   <div class="card q" data-q="1.1">
     <div class="qtitle"><span class="qno">1.1</span><span>年龄分布</span></div>
@@ -468,7 +456,9 @@ document.addEventListener('change',e=>{if(e.target.classList.contains('upfile'))
 function exportText(){
   let out='【门店消费者画像采集表】\n';
   const meta={};document.querySelectorAll('#meta input').forEach(i=>meta[i.id]=i.value);
-  out+='门店：'+(meta.store||'')+'　督导：'+(meta.sup||'')+'　日期：'+(meta.date||'')+'\n\n';
+  out+='门店：'+(meta.store||'')+'　巡店人：'+(meta.sup||'')+'　日期：'+(meta.date||'')+'\n';
+  out+='店铺性质：'+(meta.shop_type||'')+'　到店时间段：'+(meta.visit_time||'')+'\n';
+  out+='气温与体感：'+(meta.weather||'')+'　采集样本数：'+(meta.sample_n||'')+'\n\n';
   document.querySelectorAll('.card.q').forEach(c=>{
     const q=c.dataset.q;const title=c.querySelector('.qtitle span:last-child').textContent;
     out+=q+' '+title+'\n';
