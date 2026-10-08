@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>门店消费者画像采集表 v1.0</title>
+<style>
+:root{--head:#7a1f2b;--sec:#b23a48;--bg:#f4f1ec;--line:#e7ddd2;--ink:#2a2a2a;--mut:#8a8076}
+*{box-sizing:border-box}
+body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
+.topbar{position:sticky;top:0;z-index:20;background:var(--head);color:#fff;padding:8px 14px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.topbar .ttl{font-weight:700;font-size:16px;margin-right:auto}
+.topbar label{font-size:13px;opacity:.9}
+.topbar input{background:rgba(255,255,255,.92);border:none;border-radius:5px;padding:4px 8px;font-size:13px;color:#222;margin-left:4px}
+nav{position:sticky;top:46px;z-index:15;background:#fff;border-bottom:1px solid var(--line);padding:6px 10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav a{font-size:12px;color:var(--head);text-decoration:none;background:#f6e9ea;border:1px solid #ecd6d8;border-radius:99px;padding:3px 10px}
+nav .pg{margin-left:auto;font-size:12px;color:var(--mut)}
+main{max-width:880px;margin:14px auto;padding:0 12px 90px}
+.sectop{display:flex;align-items:center;gap:10px;padding:10px 2px 4px;border-bottom:2px solid var(--sec);margin-bottom:6px}
+.sectop h2{font-size:18px;color:var(--head);margin:0;flex:1}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.qtitle{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.qno{background:var(--head);color:#fff;border-radius:6px;padding:1px 8px;font-size:13px;font-weight:700;white-space:nowrap}
+.qtitle>span:last-child{font-weight:700;font-size:15px}
+.dur{margin-left:auto;font-size:11px;color:var(--head);background:#FBEAEA;border-radius:99px;padding:2px 8px}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.opt{display:inline-flex;align-items:center;gap:4px;background:#faf4f1;border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:13px;cursor:pointer}
+.opt input{margin:0}
+.fillline{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:6px 0}
+.fl{font-size:13px;color:#555;white-space:nowrap}
+.blank{border:1px solid #d8cdbf;border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fffdfb}
+textarea.blank{resize:vertical;display:block}
+.tblwrap{overflow-x:auto;margin:6px 0}
+table.frm{border-collapse:collapse;width:100%;font-size:13px}
+table.frm th,table.frm td{border:1px solid var(--line);padding:5px 8px;text-align:center}
+table.frm th{background:#f6e9ea;color:var(--head)}
+table.frm td:first-child,table.frm th:first-child{text-align:left}
+.optc{display:inline-flex}
+.photos{display:flex;flex-direction:column;gap:8px;margin:6px 0}
+.uprow{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.upbtn{display:inline-flex;align-items:center;gap:4px;background:#FFF0F0;color:var(--head);border:1px dashed var(--sec);border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;white-space:nowrap}
+.upfile{display:none}
+.thumbwrap{display:flex;flex-wrap:wrap;gap:6px}
+.thumb{width:74px;height:74px;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
+.bar{position:fixed;right:14px;bottom:14px;display:flex;gap:8px;z-index:30}
+.btn{background:var(--head);color:#fff;border:none;border-radius:8px;padding:9px 14px;font-size:14px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.btn.ghost{background:#fff;color:var(--head);border:1px solid var(--head)}
+.modalmask{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:50;align-items:center;justify-content:center;padding:16px}
+.modalmask.show{display:flex}
+.modal{background:#fff;border-radius:12px;max-width:560px;width:100%;max-height:86vh;overflow:auto;padding:16px}
+.modal h3{margin:0 0 10px;color:var(--head)}
+.mbody textarea{width:100%;min-height:60px;border:1px solid var(--line);border-radius:6px;padding:6px;font-family:inherit}
+.mfoot{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+@media print{
+  .topbar,nav,.bar,.modalmask{display:none!important}
+  body{background:#fff}
+  .card{break-inside:avoid;box-shadow:none}
+  main{max-width:none;margin:0}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="ttl">门店消费者画像采集表</span>
+  <span id="meta">
+    <label>门店<input id="store" placeholder="门店名称"></label>
+    <label>督导<input id="sup" placeholder="姓名"></label>
+    <label>日期<input id="date" type="date"></label>
+  </span>
+</div>
+<nav id="nav"></nav>
+<main>
+  <section class="sec">
+    <div class="sectop"><h2>基础采集信息</h2></div>
+  <div class="card q" data-q="0.1">
+    <div class="qtitle"><span class="qno">0.1</span><span>店铺性质</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">街铺</label>
+      <label class="opt"><input type="checkbox">商场专柜店</label>
+      <label class="opt"><input type="checkbox">步行街店</label>
+      <label class="opt"><input type="checkbox">社区店</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="0.2">
+    <div class="qtitle"><span class="qno">0.2</span><span>到店时间段</span></div>
+    <div class="fillline"><span class="fl">本次到店时间：</span><input class="blank" placeholder="如 上午 10:00 / 傍晚 18:00，停留约多久"></div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="0.3">
+    <div class="qtitle"><span class="qno">0.3</span><span>气温与体感</span></div>
+    <div class="fillline"><span class="fl">天气 / 体感：</span><input class="blank" placeholder="如 32℃ 闷热 / 18℃ 凉爽 / 下雨"></div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="0.4">
+    <div class="qtitle"><span class="qno">0.4</span><span>采集样本数</span></div>
+    <div class="fillline"><span class="fl">有效观察 / 访谈人数：</span><input class="blank" placeholder="约 ___ 人"></div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>  <section class="sec">
+    <div class="sectop"><h2>一、客群画像（到店顾客整体长什么样）</h2></div>
+  <div class="card q" data-q="1.1">
+    <div class="qtitle"><span class="qno">1.1</span><span>年龄分布</span></div>
+    <div class="tblwrap"><table class="frm">
+<thead><tr><th>年龄段</th><th>多</th><th>较少</th><th>稀疏</th></tr></thead><tbody><tr><td>幼儿</td><td><label class="optc"><input type="radio" name="age_幼儿"></label></td><td><label class="optc"><input type="radio" name="age_幼儿"></label></td><td><label class="optc"><input type="radio" name="age_幼儿"></label></td></tr><tr><td>小学</td><td><label class="optc"><input type="radio" name="age_小学"></label></td><td><label class="optc"><input type="radio" name="age_小学"></label></td><td><label class="optc"><input type="radio" name="age_小学"></label></td></tr><tr><td>中学</td><td><label class="optc"><input type="radio" name="age_中学"></label></td><td><label class="optc"><input type="radio" name="age_中学"></label></td><td><label class="optc"><input type="radio" name="age_中学"></label></td></tr><tr><td>青年</td><td><label class="optc"><input type="radio" name="age_青年"></label></td><td><label class="optc"><input type="radio" name="age_青年"></label></td><td><label class="optc"><input type="radio" name="age_青年"></label></td></tr><tr><td>中年</td><td><label class="optc"><input type="radio" name="age_中年"></label></td><td><label class="optc"><input type="radio" name="age_中年"></label></td><td><label class="optc"><input type="radio" name="age_中年"></label></td></tr><tr><td>老年</td><td><label class="optc"><input type="radio" name="age_老年"></label></td><td><label class="optc"><input type="radio" name="age_老年"></label></td><td><label class="optc"><input type="radio" name="age_老年"></label></td></tr></tbody>    </table></div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.2">
+    <div class="qtitle"><span class="qno">1.2</span><span>性别</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">男性多</label>
+      <label class="opt"><input type="checkbox">男性较少</label>
+      <label class="opt"><input type="checkbox">男性稀疏</label>
+    </div>    <div class="fillline"><span class="fl">补充说明：</span><input class="blank" style="width:100%" placeholder="如 男女比例、谁主导购买"></div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.3">
+    <div class="qtitle"><span class="qno">1.3</span><span>体重特征</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">偏瘦</label>
+      <label class="opt"><input type="checkbox">标准</label>
+      <label class="opt"><input type="checkbox">微胖</label>
+      <label class="opt"><input type="checkbox">壮</label>
+      <label class="opt"><input type="checkbox">胖</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.4">
+    <div class="qtitle"><span class="qno">1.4</span><span>身高特征</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio">男：不高</label>
+      <label class="opt"><input type="radio">男：正常</label>
+      <label class="opt"><input type="radio">男：偏高</label>
+    </div>    <div class="fillline"><span class="fl">女顾客身高特征：</span><input class="blank" style="width:100%" placeholder="如 普遍不高 / 偏高挑"></div>    <div class="opts">
+      <label class="opt"><input type="checkbox">童：幼儿园</label>
+      <label class="opt"><input type="checkbox">童：小学生</label>
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.5">
+    <div class="qtitle"><span class="qno">1.5</span><span>穿着松紧</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">紧身</label>
+      <label class="opt"><input type="checkbox">合身</label>
+      <label class="opt"><input type="checkbox">宽松</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.6">
+    <div class="qtitle"><span class="qno">1.6</span><span>穿着质感</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">有搭配</label>
+      <label class="opt"><input type="checkbox">干净整洁</label>
+      <label class="opt"><input type="checkbox">随意</label>
+      <label class="opt"><input type="checkbox">旧衣磨损</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.7">
+    <div class="qtitle"><span class="qno">1.7</span><span>整体穿着风格</span></div>
+    <textarea class="blank" style="width:100%;min-height:70px" placeholder="描述顾客整体穿搭风格，如潮流辣妹 / 通勤简约 / 休闲舒适 / 带娃家长等"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.8">
+    <div class="qtitle"><span class="qno">1.8</span><span>工作特征</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">有穿工衣</label>
+      <label class="opt"><input type="checkbox">无工衣</label>
+    </div>    <div class="fillline"><span class="fl">穿工衣人群密度：</span><input class="blank" style="width:60%" placeholder="多 / 较少 / 稀疏"></div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.9">
+    <div class="qtitle"><span class="qno">1.9</span><span>语言 / 身份</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">本地人</label>
+      <label class="opt"><input type="checkbox">外来常住</label>
+      <label class="opt"><input type="checkbox">流动务工</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="1.10">
+    <div class="qtitle"><span class="qno">1.10</span><span>消费习惯</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">追款式</label>
+      <label class="opt"><input type="checkbox">求实惠</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>  <section class="sec">
+    <div class="sectop"><h2>二、尺码需求</h2></div>
+  <div class="card q" data-q="2.1">
+    <div class="qtitle"><span class="qno">2.1</span><span>特殊尺码需求</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">大码需求</label>
+      <label class="opt"><input type="checkbox">小码需求</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>  <section class="sec">
+    <div class="sectop"><h2>三、品类偏好</h2></div>
+  <div class="card q" data-q="3.1">
+    <div class="qtitle"><span class="qno">3.1</span><span>问 / 试什么款（风格）</span></div>
+    <textarea class="blank" style="width:100%;min-height:70px" placeholder="顾客反复问、反复试的是哪些风格 / 品类？"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="3.2">
+    <div class="qtitle"><span class="qno">3.2</span><span>购买关注点</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">面料</label>
+      <label class="opt"><input type="checkbox">版型</label>
+      <label class="opt"><input type="checkbox">颜色</label>
+      <label class="opt"><input type="checkbox">价格</label>
+      <label class="opt"><input type="checkbox">品牌</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>  <section class="sec">
+    <div class="sectop"><h2>四、客流情况</h2></div>
+  <div class="card q" data-q="4.1">
+    <div class="qtitle"><span class="qno">4.1</span><span>进店与成交</span></div>
+    <div class="opts">
+      <label class="opt"><input type="radio">进店基本都成交</label>
+      <label class="opt"><input type="radio">一半成交</label>
+      <label class="opt"><input type="radio">少成交</label>
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="4.2">
+    <div class="qtitle"><span class="qno">4.2</span><span>门口人流情况</span></div>
+    <textarea class="blank" style="width:100%;min-height:60px" placeholder="门口经过的人流多不多？高峰时段？"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="4.3">
+    <div class="qtitle"><span class="qno">4.3</span><span>客流来源</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">住宅小区</label>
+      <label class="opt"><input type="checkbox">写字楼 / 工业园</label>
+      <label class="opt"><input type="checkbox">学校</label>
+      <label class="opt"><input type="checkbox">对街商场 / 步行街</label>
+      <label class="opt"><input type="checkbox">公交 / 地铁</label>
+      <label class="opt"><input type="checkbox">本商场内</label>
+      <label class="opt"><input type="checkbox">路过</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="4.4">
+    <div class="qtitle"><span class="qno">4.4</span><span>连带情况</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">1-2 件</label>
+      <label class="opt"><input type="checkbox">≥3 件</label>
+      <label class="opt"><input type="checkbox">有鞋袜 / 配饰 / 玩具等非服装</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>  <section class="sec">
+    <div class="sectop"><h2>五、门店环境与周边</h2></div>
+  <div class="card q" data-q="5.1">
+    <div class="qtitle"><span class="qno">5.1</span><span>周边业态类型</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">住宅小区</label>
+      <label class="opt"><input type="checkbox">写字楼</label>
+      <label class="opt"><input type="checkbox">工业园</label>
+      <label class="opt"><input type="checkbox">学校</label>
+      <label class="opt"><input type="checkbox">医院</label>
+      <label class="opt"><input type="checkbox">对街步行街</label>
+      <label class="opt"><input type="checkbox">对街商场</label>
+      <label class="opt"><input type="checkbox">隔壁同品类</label>
+      <label class="opt"><input type="checkbox">大型超市</label>
+      <label class="opt"><input type="checkbox">夜市</label>
+      <label class="opt"><input type="checkbox">无</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>    <div class="fillline"><span class="fl">标记是否为截客点：</span><input class="blank" style="width:100%" placeholder="哪些业态在截咱们的客？"></div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="5.2">
+    <div class="qtitle"><span class="qno">5.2</span><span>影响强度 / 方向</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">强吸引</label>
+      <label class="opt"><input type="checkbox">强截流</label>
+      <label class="opt"><input type="checkbox">中</label>
+      <label class="opt"><input type="checkbox">弱</label>
+      <label class="opt"><input type="checkbox">无</label>
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="5.3">
+    <div class="qtitle"><span class="qno">5.3</span><span>新出现的商业</span></div>
+    <textarea class="blank" style="width:100%;min-height:60px" placeholder="附近近期新开了什么店 / 商业体？"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="5.4">
+    <div class="qtitle"><span class="qno">5.4</span><span>文旅需求</span></div>
+    <textarea class="blank" style="width:100%;min-height:60px" placeholder="是否景区 / 文旅集中地？游客买什么？"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="5.5">
+    <div class="qtitle"><span class="qno">5.5</span><span>节庆民俗</span></div>
+    <textarea class="blank" style="width:100%;min-height:60px" placeholder="本地节庆 / 民俗带来什么特殊需求？"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="5.6">
+    <div class="qtitle"><span class="qno">5.6</span><span>季节特点</span></div>
+    <textarea class="blank" style="width:100%;min-height:60px" placeholder="季节有什么特殊的？降温早 / 晚、回南天、雾大等"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>  <section class="sec">
+    <div class="sectop"><h2>六、主观印象与时机</h2></div>
+  <div class="card q" data-q="6.1">
+    <div class="qtitle"><span class="qno">6.1</span><span>顾客印象（正 / 负反馈）</span></div>
+    <textarea class="blank" style="width:100%;min-height:70px" placeholder="顾客对门店 / 货品的整体印象，夸什么、吐槽什么"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="6.2">
+    <div class="qtitle"><span class="qno">6.2</span><span>近期突变时机</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">降温</label>
+      <label class="opt"><input type="checkbox">回暖</label>
+      <label class="opt"><input type="checkbox">雨季</label>
+      <label class="opt"><input type="checkbox">大促</label>
+      <label class="opt"><input type="checkbox">新店开业</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>    <textarea class="blank" style="width:100%;min-height:50px" placeholder="近期有什么突变影响了客流 / 需求？"></textarea>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>  <section class="sec">
+    <div class="sectop"><h2>七、门店自身情况</h2></div>
+  <div class="card q" data-q="7.1">
+    <div class="qtitle"><span class="qno">7.1</span><span>门店位置</span></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox">商场内（____层，进门 / 角落）</label>
+      <label class="opt"><input type="checkbox">步行街内</label>
+      <label class="opt"><input type="checkbox">街铺</label>
+      <label class="opt"><input type="checkbox">社区</label>
+      <label class="opt"><input type="checkbox">其他：</label><input class="blank" style="width:120px" placeholder="写一下">
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  <div class="card q" data-q="7.2">
+    <div class="qtitle"><span class="qno">7.2</span><span>拍照留底</span></div>
+    <div class="photos" data-multi>
+      <div class="uprow">
+        <label class="upbtn">拍照<input type="file" class="upfile" accept="image/*" capture="environment"></label>
+        <label class="upbtn">从相册选<input type="file" class="upfile" accept="image/*" multiple></label>
+        <div class="thumbwrap"><img class="thumb" style="display:none"></div>
+      </div>
+    </div>
+    <textarea class="blank" style="width:100%;min-height:48px" placeholder="其他观察 / 补充说明（可留空）"></textarea>
+  </div>
+  </section>
+</main>
+<footer>门店消费者画像采集表 v1.0｜数据仅保存在本机浏览器，可“暂时保存 / 导出反馈 / 打印”归档<br>建议在 Chrome / Edge 中打开；手机、平板亦可使用</footer>
+<div class="bar">
+  <button class="btn ghost" id="btnTop">回到顶部</button>
+  <button class="btn ghost" id="btnSave">暂时保存</button>
+  <button class="btn" id="btnExport">导出反馈</button>
+  <button class="btn ghost" id="btnPrint">打印</button>
+</div>
+<div class="modalmask" id="expModal"><div class="modal">
+  <h3>导出采集记录（可复制 / 下载）</h3>
+  <div class="mbody"><textarea id="expOut" readonly></textarea></div>
+  <div class="mfoot">
+    <button class="btn ghost" id="btnCopy">复制</button>
+    <button class="btn ghost" id="btnDown">下载 .txt</button>
+    <button class="btn" id="btnExpClose">关闭</button>
+  </div>
+</div></div>
+<script>
+const SAVE_KEY='portrait_v1';
+function debounce(fn,t){let id;return function(){clearTimeout(id);id=setTimeout(fn,t);};}
+const save=debounce(function(){
+  const data={meta:{},ans:{}};
+  document.querySelectorAll('#meta input').forEach(i=>data.meta[i.id]=i.value);
+  document.querySelectorAll('.card.q').forEach(c=>{
+    const q=c.dataset.q;
+    const checks=[...c.querySelectorAll('input[type=checkbox]')].map(i=>i.checked?'1':'0');
+    const radios=[...c.querySelectorAll('input[type=radio]')].map(i=>i.checked?'1':'0');
+    const texts=[...c.querySelectorAll('textarea.blank, input.blank')].map(i=>i.value);
+    data.ans[q]={checks,radios,texts};
+  });
+  localStorage.setItem(SAVE_KEY,JSON.stringify(data));
+},400);
+function load(){
+  try{const data=JSON.parse(localStorage.getItem(SAVE_KEY));if(!data)return;
+    Object.entries(data.meta||{}).forEach(([k,v])=>{const e=document.getElementById(k);if(e)e.value=v;});
+    Object.entries(data.ans||{}).forEach(([q,a])=>{
+      const c=document.querySelector('.card.q[data-q="'+q+'"]');if(!c)return;
+      const cb=c.querySelectorAll('input[type=checkbox]');
+      (a.checks||[]).forEach((v,i)=>{if(cb[i])cb[i].checked=v==='1';});
+      const rb=c.querySelectorAll('input[type=radio]');
+      (a.radios||[]).forEach((v,i)=>{if(rb[i])rb[i].checked=v==='1';});
+      const tx=c.querySelectorAll('textarea.blank, input.blank');
+      (a.texts||[]).forEach((v,i)=>{if(tx[i])tx[i].value=v;});
+    });
+  }catch(e){}
+}
+function buildNav(){
+  const nav=document.getElementById('nav');const pg=document.createElement('span');pg.className='pg';
+  document.querySelectorAll('section.sec').forEach((s,i)=>{
+    const t=s.querySelector('.sectop h2').textContent;
+    const a=document.createElement('a');a.href='#sec'+i;a.textContent=t.replace(/^[一二三四五六七]、/,'');
+    a.onclick=()=>document.getElementById('sec'+i).scrollIntoView({behavior:'smooth'});
+    nav.insertBefore(a,pg);
+  });
+  nav.appendChild(pg);updatePg();
+}
+function updatePg(){
+  const total=document.querySelectorAll('.card.q').length;
+  let done=0;
+  document.querySelectorAll('.card.q').forEach(c=>{
+    const filled=[...c.querySelectorAll('input')].some(i=>i.checked)
+      || [...c.querySelectorAll('textarea.blank, input.blank')].some(i=>i.value.trim());
+    if(filled)done++;
+  });
+  const pg=document.querySelector('nav .pg');if(pg)pg.textContent='已填 '+done+' / '+total;
+}
+document.addEventListener('input',e=>{save();updatePg();});
+document.addEventListener('change',e=>{save();updatePg();});
+function handleUpfile(el){
+  const photos=el.closest('.photos');const isMulti=photos&&photos.dataset.multi;
+  const files=Array.from(el.files||[]);if(!files.length)return;
+  if(isMulti){
+    const row=el.closest('.uprow');
+    files.forEach((f,idx)=>{
+      let r=row;
+      if(idx>0){r=row.cloneNode(true);r.querySelector('.upfile').value='';const th=r.querySelector('.thumb');if(th){th.src='';th.style.display='none';}row.parentNode.insertBefore(r,row.nextSibling);}
+      const img=r.querySelector('.thumb');if(img){const rd=new FileReader();rd.onload=ev=>{img.src=ev.target.result;img.style.display='inline-block';};rd.readAsDataURL(f);}
+      r.querySelectorAll('.upbtn').forEach(b=>b.style.display='none');
+    });
+    const fresh=row.cloneNode(true);fresh.querySelector('.upfile').value='';const ft=fresh.querySelector('.thumb');if(ft){ft.src='';ft.style.display='none';}fresh.querySelectorAll('.upbtn').forEach(b=>b.style.display='');photos.appendChild(fresh);
+    return;
+  }
+  const img=el.closest('.uprow').querySelector('.thumb');const rd=new FileReader();
+  rd.onload=ev=>{img.src=ev.target.result;img.style.display='inline-block';};rd.readAsDataURL(files[0]);
+}
+document.addEventListener('change',e=>{if(e.target.classList.contains('upfile'))handleUpfile(e.target);});
+function exportText(){
+  let out='【门店消费者画像采集表】\n';
+  const meta={};document.querySelectorAll('#meta input').forEach(i=>meta[i.id]=i.value);
+  out+='门店：'+(meta.store||'')+'　督导：'+(meta.sup||'')+'　日期：'+(meta.date||'')+'\n\n';
+  document.querySelectorAll('.card.q').forEach(c=>{
+    const q=c.dataset.q;const title=c.querySelector('.qtitle span:last-child').textContent;
+    out+=q+' '+title+'\n';
+    c.querySelectorAll('input[type=checkbox]').forEach(i=>{if(i.checked){const l=i.closest('label');out+='  ☑ '+(l?l.textContent.trim():'')+'\n';}});
+    c.querySelectorAll('input[type=radio]').forEach(i=>{if(i.checked){const l=i.closest('label');out+='  ◉ '+(l?l.textContent.trim():'')+'\n';}});
+    c.querySelectorAll('textarea.blank, input.blank').forEach(t=>{if(t.value.trim())out+='  ✎ '+t.value.trim()+'\n';});
+    out+='\n';
+  });
+  return out;
+}
+function openExport(){
+  const out=exportText();const m=document.getElementById('expModal');
+  m.classList.add('show');m.querySelector('#expOut').value=out;
+}
+function download(){
+  const out=exportText();const b=new Blob([out],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);
+  a.download='门店消费者画像_'+ (document.getElementById('store').value||'') +'_'+ (document.getElementById('date').value||'') +'.txt';
+  a.click();
+}
+window.addEventListener('DOMContentLoaded',()=>{load();buildNav();
+  document.getElementById('btnSave').onclick=()=>{save();alert('已保存到本机浏览器');};
+  document.getElementById('btnExport').onclick=openExport;
+  document.getElementById('btnPrint').onclick=()=>window.print();
+  document.getElementById('btnTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('btnCopy').onclick=()=>{navigator.clipboard.writeText(document.getElementById('expOut').value).then(()=>alert('已复制'));};
+  document.getElementById('btnDown').onclick=download;
+  document.getElementById('btnExpClose').onclick=()=>document.getElementById('expModal').classList.remove('show');
+});
+</script>
+</body>
+</html>
