@@ -85,6 +85,8 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
     <span class="ttl">门店消费者画像采集表</span>
     <button class="tbtn" id="btnExport">导出反馈</button>
     <button class="tbtn" id="btnSave">暂时保存</button>
+    <button class="tbtn" id="btnClear">清空</button>
+    <button class="tbtn" id="btnSubmit">提交</button>
     <button class="tbtn" id="btnPrint">打印 / PDF</button>
   </div>
   <div class="hrow" id="meta">
@@ -412,7 +414,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
   <p class="tagtip">系统按 7 条逻辑线各出 1 个标签（客群 / 体型尺码 / 穿着风格 / 消费力 / 成交连带 / 门店位置 / 近期时机），同一标签内只放同一件事的信息，互不混杂；随勾随变，导出时一并带出。</p></div>
 </section>
 </main>
-<footer>门店消费者画像采集表 v1.0｜数据仅保存在本机浏览器，可“暂时保存 / 导出反馈 / 打印”归档<br>建议在 Chrome / Edge 中打开；手机、平板亦可使用</footer>
+<footer>门店消费者画像采集表 v1.0｜数据仅保存在本机浏览器，可“暂时保存 / 清空 / 提交 / 导出反馈 / 打印”归档<br>建议在 Chrome / Edge 中打开；手机、平板亦可使用</footer>
 <div class="modalmask" id="expModal"><div class="modal">
   <h3>导出采集记录（可复制 / 下载）</h3>
   <div class="mbody"><textarea id="expOut" readonly></textarea></div>
@@ -626,6 +628,28 @@ function openExport(){
   const out=exportText();const m=document.getElementById('expModal');
   m.classList.add('show');m.querySelector('#expOut').value=out;
 }
+function clearAll(){
+  if(!confirm('确定清空全部内容（含表头）？此操作不可撤销。'))return;
+  localStorage.removeItem(SAVE_KEY);
+  document.querySelectorAll('input,textarea,select').forEach(e=>{
+    if(e.type==='checkbox'||e.type==='radio')e.checked=false;
+    else e.value='';
+  });
+  document.querySelectorAll('.photos .thumb').forEach(t=>{t.src='';t.style.display='none';});
+  document.querySelectorAll('.photos .upbtn').forEach(b=>b.style.display='');
+  const s=document.getElementById('savedAt');if(s)s.textContent='已清空';
+  updateTags();updatePg();
+}
+function submitForm(){
+  const store=document.getElementById('store').value.trim();
+  const date=document.getElementById('date').value.trim();
+  if(!store||!date){alert('请先填写表头的「门店」和「日期」再提交');window.scrollTo({top:0,behavior:'smooth'});return;}
+  save();
+  download();
+  const now=Date.now();localStorage.setItem(SAVE_KEY+'_submitted',now);
+  const s=document.getElementById('savedAt');if(s)s.textContent='✓ 已提交 '+new Date(now).toLocaleString('zh-CN',{hour12:false});
+  alert('提交成功：记录已生成本地归档文件，可连同文件一并发回总部。');
+}
 function download(){
   const out=exportText();const b=new Blob([out],{type:'text/plain;charset=utf-8'});
   const a=document.createElement('a');a.href=URL.createObjectURL(b);
@@ -635,6 +659,8 @@ function download(){
 window.addEventListener('DOMContentLoaded',()=>{load();buildNav();syncCond();updateTags();
   document.getElementById('btnSave').onclick=()=>{save();alert('已保存到本机浏览器');};
   document.getElementById('btnExport').onclick=openExport;
+  document.getElementById('btnClear').onclick=clearAll;
+  document.getElementById('btnSubmit').onclick=submitForm;
   document.getElementById('btnPrint').onclick=()=>window.print();
   document.getElementById('btnCopy').onclick=()=>{navigator.clipboard.writeText(document.getElementById('expOut').value).then(()=>alert('已复制'));};
   document.getElementById('btnDown').onclick=download;
