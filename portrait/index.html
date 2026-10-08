@@ -409,7 +409,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
 <section class="sec" id="tagSec">
   <div class="sectop"><h2>八、自动标签卡</h2></div>
   <div class="card"><div class="tagpanel" id="tagPanel"><span class="tag empty">（勾选上方内容后自动生成标签）</span></div>
-  <p class="tagtip">系统自动归纳为最多 6 个综合标签：含一条融合「身份·尺码·风格」的客群画像结论，再加经营 / 成交 / 门店时机等；随勾随变，导出时一并带出。</p></div>
+  <p class="tagtip">系统按 6 大维度各出 1 个综合标签（客群 / 体型尺码 / 穿着风格 / 消费力 / 成交连带 / 门店时机），每个标签会汇总该维度里你勾选的全部信息，一条不漏；随勾随变，导出时一并带出。</p></div>
 </section>
 </main>
 <footer>门店消费者画像采集表 v1.0｜数据仅保存在本机浏览器，可“暂时保存 / 导出反馈 / 打印”归档<br>建议在 Chrome / Edge 中打开；手机、平板亦可使用</footer>
@@ -499,19 +499,51 @@ function checkedLabels(){
 function computeTags(){
   const L=[...checkedLabels()];
   const hit=x=>L.some(t=>t.indexOf(x)>=0);
-  const CUST=[['家庭女性客',['女性多','带娃家长']],['女客主导',['女性多']],['男客主导',['男性多']],['工衣刚需',['有穿工衣']],['外来务工',['外来人口']]];
-  const SIZE=[['大码',['大码需求','微胖','胖']],['小码',['小码需求']]];
-  const STYLE=[['通勤风',['通勤简约女','通勤简约男']],['潮流风',['潮流辣妹女','潮男']],['休闲风',['休闲舒适女']],['温柔风',['气质温柔女']]];
-  const LOC=[['降温',['降温']],['新店分流',['新店开业']],['社区店',['社区','住宅小区']],['街铺店',['街铺']],['商场旺位',['商场内','商场进门']]];
-  const first=arr=>{for(const r of arr){if(r[1].every(hit))return r[0];}return '';};
   const out=[];
-  const G0=[['竞品截客',['隔壁同品类','强截流']],['高价值店',['进店基本都成交','≥3 件']],['商场死角',['商场内','商场角落']],['活动冲量',['求实惠','大促']]];
-  G0.forEach(([t,req])=>{if(req.every(hit)&&out.length<2)out.push(t);});
-  const c=first(CUST);
-  if(c){let s=c;const sz=first(SIZE);if(sz)s+='·'+sz;const one=STYLE.filter(r=>r[1].some(hit));if(one.length===1)s+='·'+one[0][0];out.push(s);}
-  if(out.length<6){if((hit('求实惠')||hit('大促'))&&!out.includes('活动冲量'))out.push('价格敏感');else if(hit('追款式'))out.push('追款');}
-  if(out.length<6){if(hit('少成交'))out.push('低转化');else if(hit('进店基本都成交')||hit('≥3 件'))out.push('高连带');}
-  if(out.length<6){const lc=first(LOC);if(lc)out.push(lc);}
+  // 1) 客群身份（全部命中；家庭女性客已含女客+带娃，不重复出）
+  const ids=[];
+  if(hit('女性多')&&hit('男性多'))ids.push('男女均衡');
+  else if(hit('女性多')&&hit('带娃家长'))ids.push('家庭女性客');
+  else if(hit('女性多'))ids.push('女客主导');
+  else if(hit('男性多'))ids.push('男客主导');
+  if(hit('带娃家长')&&ids[0]!=='家庭女性客')ids.push('带娃家庭');
+  if(hit('有穿工衣'))ids.push('工衣刚需');
+  if(hit('外来人口'))ids.push('外来务工');
+  if(ids.length)out.push(ids.join('·'));
+  // 2) 体型尺码（胖瘦+码需求全收）
+  const body=[];
+  if(hit('微胖')||hit('胖'))body.push('微胖');
+  if(hit('偏瘦'))body.push('偏瘦');
+  if(hit('大码需求'))body.push('大码');
+  if(hit('小码需求'))body.push('小码');
+  if(body.length)out.push(body.join('·'));
+  // 3) 穿着风格（可多个，/ 分隔）
+  const smap={'通勤简约女':'通勤','通勤简约男':'通勤','潮流辣妹女':'潮流','潮男':'潮流','休闲舒适女':'休闲','气质温柔女':'温柔'};
+  const st=[...new Set(Object.keys(smap).filter(hit).map(k=>smap[k]))];
+  if(st.length)out.push(st.join('/')+'风');
+  // 4) 消费力
+  const pay=[];
+  if(hit('求实惠')||hit('大促'))pay.push('价格敏感');
+  if(hit('追款式'))pay.push('追款');
+  if(pay.length)out.push(pay.join('·'));
+  // 5) 成交连带
+  const deal=[];
+  if(hit('少成交'))deal.push('低转化');
+  else{
+    if(hit('进店基本都成交'))deal.push('高成交');
+    if(hit('≥3 件'))deal.push('高连带');
+  }
+  if(deal.length)out.push(deal.join('·'));
+  // 6) 门店与时机
+  const shop=[];
+  if(hit('商场内')&&hit('商场角落'))shop.push('商场死角');
+  else if(hit('商场内')&&hit('商场进门'))shop.push('商场旺位');
+  if(hit('社区')||hit('住宅小区'))shop.push('社区店');
+  if(hit('街铺'))shop.push('街铺店');
+  if(hit('隔壁同品类')&&hit('强截流'))shop.push('竞品截客');
+  if(hit('降温'))shop.push('降温');
+  if(hit('新店开业'))shop.push('新店分流');
+  if(shop.length)out.push(shop.join('·'));
   return out;
 }
 function updateTags(){
