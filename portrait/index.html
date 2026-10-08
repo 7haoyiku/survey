@@ -9,12 +9,13 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
 .topbar{position:sticky;top:0;z-index:30;background:var(--head);color:#fff;padding:8px 14px 10px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.topwrap{max-width:880px;margin:0 auto}
 .toprow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .topbar .ttl{font-weight:700;font-size:16px;margin-right:auto}
 .tbtn{background:#fff;color:var(--head);border:none;border-radius:6px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer}
 .tbtn:hover{opacity:.88}
-.hrow{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:8px}
-.hrow label{font-size:12px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:3px;flex:1 1 150px}
+.hrow{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:8px;justify-content:center}
+.hrow label{font-size:12px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:3px;flex:0 1 170px}
 .hrow input{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:6px 10px;font-size:13px;color:#fff;width:100%;color-scheme:dark}
 .hrow input::placeholder{color:rgba(255,255,255,.6)}
 .pgrow{display:flex;align-items:center;gap:10px;margin-top:9px;font-size:12px;color:rgba(255,255,255,.85);white-space:nowrap}
@@ -70,6 +71,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
 </head>
 <body>
 <div class="topbar">
+  <div class="topwrap">
   <div class="toprow">
     <span class="ttl">门店消费者画像采集表</span>
     <button class="tbtn" id="btnExport">导出反馈</button>
@@ -89,6 +91,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
     <span id="pgText">已完成 0 / 27 组</span>
     <span class="pgbar"><i id="pgFill"></i></span>
     <span id="savedAt">✓ 已保存</span>
+  </div>
   </div>
 </div>
 <nav id="nav"></nav>
