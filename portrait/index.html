@@ -8,13 +8,19 @@
 :root{--head:#7a1f2b;--sec:#b23a48;--bg:#f4f1ec;--line:#e7ddd2;--ink:#2a2a2a;--mut:#8a8076}
 *{box-sizing:border-box}
 body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
-.topbar{background:var(--head);color:#fff;padding:8px 14px 10px;z-index:20}
-.topbar .ttl{font-weight:700;font-size:16px;display:block;margin-bottom:6px}
-.hrow{display:flex;flex-wrap:wrap;gap:8px 12px}
-.hrow label{font-size:12px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:3px}
-.hrow input{background:rgba(255,255,255,.95);border:none;border-radius:5px;padding:5px 8px;font-size:13px;color:#222;width:170px}
-.hrow input[type=date]{width:150px}
-nav{position:sticky;top:0;z-index:15;background:#fff;border-bottom:1px solid var(--line);padding:6px 10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.topbar{position:sticky;top:0;z-index:30;background:var(--head);color:#fff;padding:8px 14px 10px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.toprow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.topbar .ttl{font-weight:700;font-size:16px;margin-right:auto}
+.tbtn{background:#fff;color:var(--head);border:none;border-radius:6px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.tbtn:hover{opacity:.88}
+.hrow{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:8px}
+.hrow label{font-size:12px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:3px;flex:1 1 150px}
+.hrow input{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:6px 10px;font-size:13px;color:#fff;width:100%;color-scheme:dark}
+.hrow input::placeholder{color:rgba(255,255,255,.6)}
+.pgrow{display:flex;align-items:center;gap:10px;margin-top:9px;font-size:12px;color:rgba(255,255,255,.85);white-space:nowrap}
+.pgbar{flex:1;height:6px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden}
+.pgbar i{display:block;height:100%;width:0;background:#f5b301;border-radius:99px;transition:width .3s}
+nav{background:#fff;border-bottom:1px solid var(--line);padding:6px 10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 nav a{font-size:12px;color:var(--head);text-decoration:none;background:#f6e9ea;border:1px solid #ecd6d8;border-radius:99px;padding:3px 10px}
 nav .pg{margin-left:auto;font-size:12px;color:var(--mut)}
 main{max-width:880px;margin:14px auto;padding:0 12px 90px}
@@ -55,7 +61,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
 .mbody textarea{width:100%;min-height:60px;border:1px solid var(--line);border-radius:6px;padding:6px;font-family:inherit}
 .mfoot{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
 @media print{
-  .topbar,nav,.bar,.modalmask{display:none!important}
+  .topbar,nav,.modalmask{display:none!important}
   body{background:#fff}
   .card{break-inside:avoid;box-shadow:none}
   main{max-width:none;margin:0}
@@ -64,15 +70,25 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
 </head>
 <body>
 <div class="topbar">
-  <span class="ttl">门店消费者画像采集表</span>
+  <div class="toprow">
+    <span class="ttl">门店消费者画像采集表</span>
+    <button class="tbtn" id="btnExport">导出反馈</button>
+    <button class="tbtn" id="btnSave">暂时保存</button>
+    <button class="tbtn" id="btnPrint">打印 / PDF</button>
+  </div>
   <div class="hrow" id="meta">
-    <label>门店<input id="store" placeholder="门店名称"></label>
+    <label>门店名称<input id="store" placeholder="门店名称"></label>
     <label>巡店人<input id="sup" placeholder="姓名"></label>
     <label>日期<input id="date" type="date"></label>
     <label>店铺性质<input id="shop_type" placeholder="街铺 / 商场专柜 / 步行街 / 社区"></label>
     <label>到店时间段<input id="visit_time" placeholder="如 上午 10:00，停留约 1 小时"></label>
     <label>气温与体感<input id="weather" placeholder="如 32℃ 闷热 / 下雨"></label>
     <label>采集样本数<input id="sample_n" placeholder="约 ___ 人"></label>
+  </div>
+  <div class="pgrow">
+    <span id="pgText">已完成 0 / 27 组</span>
+    <span class="pgbar"><i id="pgFill"></i></span>
+    <span id="savedAt">✓ 已保存</span>
   </div>
 </div>
 <nav id="nav"></nav>
@@ -363,12 +379,6 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:18px 10px}
   </section>
 </main>
 <footer>门店消费者画像采集表 v1.0｜数据仅保存在本机浏览器，可“暂时保存 / 导出反馈 / 打印”归档<br>建议在 Chrome / Edge 中打开；手机、平板亦可使用</footer>
-<div class="bar">
-  <button class="btn ghost" id="btnTop">回到顶部</button>
-  <button class="btn ghost" id="btnSave">暂时保存</button>
-  <button class="btn" id="btnExport">导出反馈</button>
-  <button class="btn ghost" id="btnPrint">打印</button>
-</div>
 <div class="modalmask" id="expModal"><div class="modal">
   <h3>导出采集记录（可复制 / 下载）</h3>
   <div class="mbody"><textarea id="expOut" readonly></textarea></div>
@@ -392,6 +402,7 @@ const save=debounce(function(){
     data.ans[q]={checks,radios,texts};
   });
   localStorage.setItem(SAVE_KEY,JSON.stringify(data));
+  const s=document.getElementById('savedAt');if(s)s.textContent='✓ 已保存 '+new Date().toTimeString().slice(0,5);
 },400);
 function load(){
   try{const data=JSON.parse(localStorage.getItem(SAVE_KEY));if(!data)return;
@@ -408,14 +419,14 @@ function load(){
   }catch(e){}
 }
 function buildNav(){
-  const nav=document.getElementById('nav');const pg=document.createElement('span');pg.className='pg';
+  const nav=document.getElementById('nav');
   document.querySelectorAll('section.sec').forEach((s,i)=>{
     const t=s.querySelector('.sectop h2').textContent;
     const a=document.createElement('a');a.href='#sec'+i;a.textContent=t.replace(/^[一二三四五六七]、/,'');
     a.onclick=()=>document.getElementById('sec'+i).scrollIntoView({behavior:'smooth'});
-    nav.insertBefore(a,pg);
+    nav.appendChild(a);
   });
-  nav.appendChild(pg);updatePg();
+  updatePg();
 }
 function updatePg(){
   const total=document.querySelectorAll('.card.q').length;
@@ -425,7 +436,8 @@ function updatePg(){
       || [...c.querySelectorAll('textarea.blank, input.blank')].some(i=>i.value.trim());
     if(filled)done++;
   });
-  const pg=document.querySelector('nav .pg');if(pg)pg.textContent='已填 '+done+' / '+total;
+  const t=document.getElementById('pgText');if(t)t.textContent='已完成 '+done+' / '+total+' 组';
+  const f=document.getElementById('pgFill');if(f)f.style.width=(total?done/total*100:0)+'%';
 }
 document.addEventListener('input',e=>{save();updatePg();});
 document.addEventListener('change',e=>{save();updatePg();syncCond();});
@@ -484,7 +496,6 @@ window.addEventListener('DOMContentLoaded',()=>{load();buildNav();syncCond();
   document.getElementById('btnSave').onclick=()=>{save();alert('已保存到本机浏览器');};
   document.getElementById('btnExport').onclick=openExport;
   document.getElementById('btnPrint').onclick=()=>window.print();
-  document.getElementById('btnTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
   document.getElementById('btnCopy').onclick=()=>{navigator.clipboard.writeText(document.getElementById('expOut').value).then(()=>alert('已复制'));};
   document.getElementById('btnDown').onclick=download;
   document.getElementById('btnExpClose').onclick=()=>document.getElementById('expModal').classList.remove('show');
